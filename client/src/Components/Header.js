@@ -7,29 +7,29 @@ function Header(){
      
       {/* The Resposive Header */}
 
-  <div className="fixed inset-0 flex z-40 lg:hidden" role="dialog" aria-modal="true">
+  {/* <div className="fixed inset-0 flex z-40 lg:hidden" role="dialog" aria-modal="true"> */}
   
-    <div className="fixed inset-0 bg-black bg-opacity-25" aria-hidden="true"></div>
+    {/* <div className="fixed inset-0 bg-black bg-opacity-25" aria-hidden="true"></div> */}
 
-    <div className="relative max-w-xs w-full bg-white shadow-xl pb-12 flex flex-col overflow-y-auto">
+    {/* <div className="relative max-w-xs w-full bg-white shadow-xl pb-12 flex flex-col overflow-y-auto"> */}
 
       {/* the button that closes menu in the Resposive  */}
       
-      <div className="px-4 pt-5 pb-2 flex">
+      {/* <div className="px-4 pt-5 pb-2 flex">
         <button type="button" className="-m-2 p-2 rounded-md inline-flex items-center justify-center text-gray-400">
-          <span className="sr-only">Close menu</span>
+          <span className="sr-only">Close menu</span> */}
 
           {/* <!-- Heroicon name: outline/x --> */}
-
+{/* 
           <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
-      </div>
+      </div> */}
 
       {/* <!-- Links --> */}
 
-      <div className="mt-2">
+      {/* <div className="mt-2">
         <div className="border-b border-gray-200">
           <div className="-mb-px block px-4 " aria-orientation="horizontal" role="tablist">
 
@@ -42,9 +42,9 @@ function Header(){
             </button>
           </div>
         </div>
-      </div>
+      </div> */}
 
-      <div className="border-t border-gray-200 py-6 px-4 space-y-6">
+      {/* <div className="border-t border-gray-200 py-6 px-4 space-y-6">
         <div className="flow-root">
           <a href="#" className="-m-2 p-2 block font-medium text-gray-900">Events</a>
         </div>
@@ -52,18 +52,18 @@ function Header(){
         <div className="flow-root">
           <a href="#" className="-m-2 p-2 block font-medium text-gray-900">Testomonial</a>
         </div>
-      </div>
+      </div> */}
 
-      <div className="border-t border-gray-200 py-6 px-4 space-y-6">
+      {/* <div className="border-t border-gray-200 py-6 px-4 space-y-6">
         <div className="flow-root">
           <a href="#" className="-m-2 p-2 block font-medium text-gray-900">Sign in</a>
         </div>
         <div className="flow-root">
           <a href="#" className="-m-2 p-2 block font-medium text-gray-900">Create account</a>
         </div>
-      </div>
-    </div>
-  </div>
+      </div> */}
+    {/* </div> */}
+  {/* </div> */}
 
   
       {/* Normal Header */}

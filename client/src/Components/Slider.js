@@ -4,26 +4,29 @@
 function slider(){
     return(
         <div className="flex flex-col items-center m-8">
-
-  <div className="w-full bg-white rounded overflow-x-hidden flex snap-x h-60">
-    <div className="snap-start w-full h-full flex items-center justify-center text-white text-4xl font-bold flex-shrink-0 bg-blue-600" id="slide-1">
-      Slide 1
+        
+  <div className="w-full bg-white rounded overflow-x-hidden flex snap-x h-80">
+    <div className="snap-start w-full h-full flex items-center justify-center text-white text-4xl font-bold flex-shrink-0 bg-black relative" id="slide-1">
+    <img src="./images/n.jpg" className="h-full w-full object-cover absolute inset-0 z-10"/>
     </div>
-    <div className="snap-start w-full h-full flex items-center justify-center text-white text-4xl font-bold flex-shrink-0 bg-green-600" id="slide-2">
-      Slide 2
+    <div className="snap-start w-full h-full flex items-center justify-center text-white text-4xl font-bold flex-shrink-0 bg-black relative" id="slide-2">
+    <img src="./images/n.jpg" className="h-full w-full object-cover absolute inset-0 z-10"/>
+      
     </div>
-    <div className="snap-start w-full h-full flex items-center justify-center text-white text-4xl font-bold flex-shrink-0 bg-red-600" id="slide-3">
-      Slide 3
+    <div className="snap-start w-full h-full flex items-center justify-center text-white text-4xl font-bold flex-shrink-0 bg-black relative" id="slide-3">
+    <img src="./images/academic.jpg" className="h-full w-full object-cover absolute inset-0 z-10"/>
+      
     </div>
-    <div className="snap-start w-full h-full flex items-center justify-center text-black text-4xl font-bold flex-shrink-0 bg-orange-600" id="slide-4">
-      Slide 4
+    <div className="snap-start w-full h-full flex items-center justify-center text-black text-4xl font-bold flex-shrink-0 bg-black relative" id="slide-4">
+    <img src="./images/netw.jpg" className="h-full w-full object-cover absolute inset-0 z-10"/>
+      
     </div>
-    <div className="snap-start w-full h-full flex items-center justify-center text-white text-4xl font-bold flex-shrink-0 bg-purple-600" id="slide-5">
-      Slide 5
+    <div className="snap-start w-full h-full flex items-center justify-center text-white text-4xl font-bold flex-shrink-0 bg-black relative" id="slide-5">
+    <img src="./images/t.jpg" className="h-full w-full object-cover absolute inset-0 z-10"/>
+      
     </div>
     <div className="snap-start w-full h-full flex items-center justify-center text-white text-4xl font-bold flex-shrink-0 bg-black relative" id="slide-6">
-      <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=448&q=80" className="h-full w-full object-cover absolute inset-0 z-10 opacity-25"/>
-      <h1 className="z-20 text-center">Any kind of content here, images too!</h1>
+      <img src="./images/n.jpg" className="h-full w-full object-cover absolute inset-0 z-10"/>
     </div>
   </div>
 

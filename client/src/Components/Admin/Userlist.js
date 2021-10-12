@@ -1,16 +1,26 @@
-
-
+import axios from "axios"
+import {useEffect, useState} from 'react'
+import { BrowserRoute as Router, Link } from "react-router-dom";
 
 
 
 
 
 function List(){
+
+  const[users, setUsers] = useState([])
+  console.log(users)
+
+  useEffect(()=> {
+    axios.get("http://localhost:8000/user/users").then((res)=> setUsers(res.data.allUsers))
+  },[])
+
+ 
     return(
         <div className="flex flex-colv sm:py-10 justify-center bg-gray-200">
         <div className="-my-2 overflow-x-auto sm:-mx-4 lg:-mx-8 ">
           <h1 className="text-center font-bold">Users list </h1>
-          <div className="py-2 align-middle inline-block min-w-full  lg:px-0">
+          <div className="py-2 align-middle inline-block max-w-full  lg:px-0">
             <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
@@ -33,6 +43,8 @@ function List(){
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
+
+                {users.map((user)=>
                   <tr>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
@@ -41,17 +53,17 @@ function List(){
                         </div>
                         <div className="ml-4">
                           <div className="text-sm font-medium text-gray-900">
-                            Jane Cooper
+                            {user.userName}
                           </div>
                           <div className="text-sm text-gray-500">
-                            jane.cooper@example.com
+                            {user.email}
                           </div>
                         </div>
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900">Regional Paradigm Technician</div>
-                      <div className="text-sm text-gray-500">Optimization</div>
+                      <div className="text-sm text-gray-900">{user.tittle}</div>
+                      {/* <div className="text-sm text-gray-500">Optimization</div> */}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
@@ -59,12 +71,15 @@ function List(){
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      Admin
+                     {user.role}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                      <a href="#" className="text-indigo-600 hover:text-indigo-900">Edit</a>
+                      <Link to = {`/singup/${user._id}`}>
+                      <a href="#" className="text-indigo-600 hover:text-indigo-900" >Edit</a>
+                      </Link>
                     </td>
                   </tr>
+                  )}
       
                   {/* <!-- More people... --> */}
                 </tbody>

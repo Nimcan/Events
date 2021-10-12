@@ -17,8 +17,7 @@ const eventModelSchema = mongoose.Schema({
         type:String,
         required:true
     },
-    price:Number,
-    image:"image"
+    price:Number
 })
 
 

@@ -20,6 +20,7 @@ import contact from './Components/Contact'
 import loading from './Components/Loading'
 import Slider from './Components/Slider'
 import checkout from './Components/Checkout'
+import addUser from './Components/Admin/Adduser'
 
 
 function App() {
@@ -46,6 +47,8 @@ function App() {
         <Route exact path = "/contact" component = {contact} />
         <Route exact path = "/Loading" component = {loading} />
         <Route exact path = "/checkout" component = {checkout}/>
+        <Route exact path = "/singup" component = {addUser} />
+        <Route exact path = "/singup/:id" component = {addUser} />
 
       </Switch>
       <Footer/>
