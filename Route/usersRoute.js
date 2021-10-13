@@ -9,8 +9,9 @@ const userRouter = express.Router()
 
 userRouter.route("/users").post(userController.newUser).get(userController.Find)
 
-//update user
+//find user by id
 userRouter.route("/users/:id").get(userController.findById)
+//update user
 userRouter.route("/:id").put(userController.Edit)
 
 

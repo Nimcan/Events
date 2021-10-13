@@ -43,6 +43,7 @@ function App() {
         <Route exact path = "/Add" component = {Addevant} />
         <Route exact path = "/cartlist" component = {Cartlist} />
         <Route exact path = "/pricing" component = {pricing}/>
+        <Route exact path = "/pricing/:id" component = {pricing}/>
         <Route exact path = "/evantlist" component = {Evantlist}/>
         <Route exact path = "/contact" component = {contact} />
         <Route exact path = "/Loading" component = {loading} />

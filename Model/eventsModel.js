@@ -5,19 +5,16 @@ const mongoose = require("mongoose")
 const eventModelSchema = mongoose.Schema({
     eventName:{
         type:String,
-        enum:true,
         required:true
     },
-    topic:{
-        type:String,
-        enum:true
-    },
-    time:Number,
-    address:{
+    Address:{
         type:String,
         required:true
     },
-    price:Number
+    eventType:String,
+    price:String,
+    Time:String,
+    qty:Number
 })
 
 

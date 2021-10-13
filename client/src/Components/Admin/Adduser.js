@@ -4,22 +4,37 @@ import {useParams} from 'react-router'
 
 function User(){
 
-  const {id} = useParams()
-
-  const[user, setUser] = useState({
+  const [user, setUser] = useState({
     userName:"",
     email:"",
     tittle:"",
     password:""
   })
+
   console.log(user)
 
+  const {id} = useParams()
+
   useEffect(()=>{
-    axios.get(`http://localhost:8000/user/users/${id}`).then((res)=> setUser(res.data.userId))
+
+    id !== undefined &&(
+    axios.get(`http://localhost:8000/user/users/${id}`)
+    .then((res)=> setUser(res.data.userId)))
   },[])
 
   function save(){
     axios.post("http://localhost:8000/user/users", user).then((res)=> console.log(res))    
+  }
+
+  function Update(){
+
+    const Data = new FormData();
+    Data.append("userName", user.userName);
+    Data.append("email", user.email);
+    Data.append("tittle", user.tittle);
+    Data.append("password", user.password);
+    axios.put(`http://localhost:8000/user/${id}`, Data).then((res)=> console.log(res))
+    console.log(Data)
   }
 
     return(
@@ -49,7 +64,7 @@ function User(){
                   {id === undefined ?
                   <button class="w-full px-4 py-2 my-2 text-base font-medium text-white transition duration-500 ease-in-out transform bg-blue-600 border-blue-600 rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-blue-800" onClick = {()=> save()} > Sing Up </button>:
                   
-                  <button class="w-full px-4 py-2 my-2 text-base font-medium text-white transition duration-500 ease-in-out transform bg-blue-600 border-blue-600 rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-blue-800" onClick = {()=> save()} > Update </button> }
+                  <button class="w-full px-4 py-2 my-2 text-base font-medium text-white transition duration-500 ease-in-out transform bg-blue-600 border-blue-600 rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-blue-800" onClick = {()=> Update()} > Update </button> }
                 </div>
               </div>
             </div>

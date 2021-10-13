@@ -1,4 +1,5 @@
-
+import {useState, useEffect} from 'react'
+import axios from 'axios'
 
 
 
@@ -6,6 +7,22 @@
 
 
 function Add(){
+
+  const [event, setEvent] = useState({
+    eventName:"",
+    Address:"",
+    eventType:"",
+    price:"",
+    Time:"",
+    qty:0
+  })
+
+  console.log(event)
+
+  function Save(e){
+    e.preventDefault()
+    axios.post("http://localhost:8000/event/events", event).then((res)=> console.log(res))
+  }
     return(
         <div className="mt-4 sm:mt-0  sm:py-6 sm:px-6 bg-gray-200">
           <h1 className="text-center font-bold mb-8 text-4xl">Add Event</h1>
@@ -27,23 +44,28 @@ function Add(){
                   <div className="grid grid-cols-6 gap-6">
                     <div className="col-span-6 sm:col-span-4">
                       <label for="first-name" className="block text-sm font-medium text-gray-700">Name Of Event</label>
-                      <input type="text" name="first-name" id="first-name" autocomplete="given-name" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:py-2 border-gray-300 rounded-md"/>
+                      <input type="text" name="first-name" id="first-name" autocomplete="given-name" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:py-2 border-gray-300 rounded-md" onChange = {(e)=> setEvent({...event, eventName:e.target.value})} />
                     </div>
-      
-                    <div className="col-span-6 sm:col-span-4">
-                      <label for="last-name" className="block text-sm font-medium text-gray-700">Topic</label>
-                      <input type="text" name="last-name" id="last-name" autocomplete="family-name" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:py-2 border-gray-300 rounded-md"/>
-                    </div>
+
+                    {/* <div className="col-span-6 sm:col-span-3">
+                      <label for="country" className="block text-sm font-medium text-gray-700">City</label>
+                      <select id="country" name="country" autocomplete="country" className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" onChange = {(e)=> setEvent({...event, eventType:e.target.value})}>
+                        <option>Hargaisa</option>
+                        <option>Mogadisho</option>
+                        <option>Jigjiga</option>
+                        <option>Garowe</option>
+                        <option>Djabouti</option>
+                      </select>
+                    </div> */}
       
                     <div className="col-span-6 sm:col-span-4">
                       <label for="email-address" className="block text-sm font-medium text-gray-700">Address </label>
-                      <input type="text" name="email-address" id="email-address" autocomplete="email" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:py-2 border-gray-300 rounded-md"/>
+                      <input type="text" name="email-address" id="email-address" autocomplete="email" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:py-2 border-gray-300 rounded-md"onChange = {(e)=> setEvent({...event, Address:e.target.value})}/>
                     </div>
       
                     <div className="col-span-6 sm:col-span-3">
                       <label for="country" className="block text-sm font-medium text-gray-700">Event Type</label>
-                      <select id="country" name="country" autocomplete="country" className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                        <option></option>
+                      <select id="country" name="country" autocomplete="country" className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" onChange = {(e)=> setEvent({...event, eventType:e.target.value})}>
                         <option>Tech events</option>
                         <option>Networking events</option>
                         <option>Religeous events</option>
@@ -54,23 +76,21 @@ function Add(){
       
                     <div className="col-span-6 sm:col-span-4">
                       <label for="street-address" className="block text-sm font-medium text-gray-700">Price</label>
-                      <input type="text" name="street-address" id="street-address" autocomplete="street-address" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:py-2 border-gray-300 rounded-md"/>
+                      <input type="text" name="street-address" id="street-address" autocomplete="street-address" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:py-2 border-gray-300 rounded-md" onChange = {(e)=> setEvent({...event, price:e.target.value})}/>
                     </div>
+
+                    
+                    <div className="col-span-6 sm:col-span-4">
+                      <label for="street-address" className="block text-sm font-medium text-gray-700">Card Quantity</label>
+                      <input type="text" name="street-address" id="street-address" autocomplete="street-address" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:py-2 border-gray-300 rounded-md" onChange = {(e)=> setEvent({...event, qty:e.target.value})}/>
+                    </div>
+
+                    
       
                     <div className="col-span-6 sm:col-span-4">
                       <label for="city" className="block text-sm font-medium text-gray-700">Time</label>
-                      <input type="text" name="city" id="city" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:py-2 border-gray-300 rounded-md"/>
-                    </div>
-{/*       
-                    <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                      <label for="state" className="block text-sm font-medium text-gray-700">State / Province</label>
-                      <input type="text" name="state" id="state" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:py-2 border-gray-300 rounded-md"/>
-                    </div> */}
-      
-                    {/* <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                      <label for="postal-code" className="block text-sm font-medium text-gray-700">ZIP / Postal</label>
-                      <input type="text" name="postal-code" id="postal-code" autocomplete="postal-code" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:py-2 border-gray-300 rounded-md"/>
-                    </div> */}
+                      <input type="text" name="city" id="city" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:py-2 border-gray-300 rounded-md" onChange = {(e)=> setEvent({...event, Time:e.target.value})}/>
+                    </div>                    
 
                   </div>
                 </div>
@@ -102,7 +122,7 @@ function Add(){
 
                 {/* final imag */}
                 <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
-                  <button type="submit" className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                  <button type="submit" className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={(e)=> Save(e)} >
                     Save
                   </button>
                 </div>

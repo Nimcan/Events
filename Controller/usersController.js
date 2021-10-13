@@ -21,7 +21,7 @@ exports.newUser = async (req, res)=>{
 
 exports.Find = async (req, res)=> {
     try{
-       const allUsers =  await User.find({})
+       const allUsers =  await User.find({ })
         res.status(200).json({
             message:"all users are finded",
             allUsers
@@ -54,6 +54,7 @@ exports.findById = async (req, res)=>{
 
 exports.Edit = async (req, res)=>{
     try{
+        console.log(req.body)
         await User.updateOne({_id:req.params.id}, req.body)
         res.status(200).json({
             message:"user is updated"
