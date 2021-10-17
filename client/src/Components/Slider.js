@@ -10,7 +10,7 @@ function slider(){
     <img src="./images/n.jpg" className="h-full w-full object-cover absolute inset-0 z-10"/>
     </div>
     <div className="snap-start w-full h-full flex items-center justify-center text-white text-4xl font-bold flex-shrink-0 bg-black relative" id="slide-2">
-    <img src="./images/n.jpg" className="h-full w-full object-cover absolute inset-0 z-10"/>
+    <img src="./images/mux.jpg" className="h-full w-full object-cover absolute inset-0 z-10"/>
       
     </div>
     <div className="snap-start w-full h-full flex items-center justify-center text-white text-4xl font-bold flex-shrink-0 bg-black relative" id="slide-3">
@@ -26,7 +26,7 @@ function slider(){
       
     </div>
     <div className="snap-start w-full h-full flex items-center justify-center text-white text-4xl font-bold flex-shrink-0 bg-black relative" id="slide-6">
-      <img src="./images/n.jpg" className="h-full w-full object-cover absolute inset-0 z-10"/>
+      <img src="./images/mm.jpg" className="h-full w-full object-cover absolute inset-0 z-10"/>
     </div>
   </div>
 

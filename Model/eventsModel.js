@@ -14,7 +14,8 @@ const eventModelSchema = mongoose.Schema({
     eventType:String,
     price:String,
     Time:String,
-    qty:Number
+    qty:Number,
+    image:String
 })
 
 

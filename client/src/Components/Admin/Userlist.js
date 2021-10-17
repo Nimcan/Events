@@ -17,7 +17,7 @@ function List(){
 
  
     return(
-        <div className="flex flex-colv sm:py-10 justify-center bg-gray-200">
+        <div className="flex flex-colv sm:py-10 justify-center bg-gray-300">
         <div className="-my-2 overflow-x-auto sm:-mx-4 lg:-mx-8 ">
           <h1 className="text-center font-bold">Users list </h1>
           <div className="py-2 align-middle inline-block max-w-full  lg:px-0">

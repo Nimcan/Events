@@ -14,14 +14,24 @@ function Add(){
     eventType:"",
     price:"",
     Time:"",
-    qty:0
+    qty:0,
+    image:""
   })
 
   console.log(event)
 
   function Save(e){
-    e.preventDefault()
-    axios.post("http://localhost:8000/event/events", event).then((res)=> console.log(res))
+    e.preventDefault();
+    const dataForm = new FormData()
+    dataForm.append("eventName", event.eventName)
+    dataForm.append("Address", event.Address)
+    dataForm.append("eventType", event.eventType)
+    dataForm.append("price", event.price)
+    dataForm.append("Time", event.Time)
+    dataForm.append("image", event.image)
+
+    axios.post("http://localhost:8000/event/events", dataForm).then((res)=> console.log(res))
+    console.log(dataForm)
   }
     return(
         <div className="mt-4 sm:mt-0  sm:py-6 sm:px-6 bg-gray-200">
@@ -38,7 +48,7 @@ function Add(){
             {/* <h1>This is photo</h1> */}
           </div>
           <div className="mt-5 md:mt-0 md:col-span-2">
-            <form action="#" method="POST">
+            <form action="#" method="POST" encrypt="">
               <div className="shadow overflow-hidden sm:rounded-md">
                 <div className="px-4 py-5 bg-white sm:p-6">
                   <div className="grid grid-cols-6 gap-6">
@@ -109,7 +119,7 @@ function Add(){
             <div className="flex text-sm text-gray-600">
               <label for="file-upload" className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
                 <span>Upload a file</span>
-                <input id="file-upload" name="file-upload" type="file" className="sr-only"/>
+                <input id="file-upload" name="file-upload" type="file" className="sr-only" onChange = {(e)=> setEvent({...event, image:e.target.files[0]})}/>
               </label>
               <p className="pl-1">or drag and drop</p>
             </div>

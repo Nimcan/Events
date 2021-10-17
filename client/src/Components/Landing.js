@@ -18,7 +18,7 @@ function Landing(){
       <div>
         <div className="mt-10">
           {/* <!-- Decorative image grid --> */}
-          <div aria-hidden="true" className="pointer-events-none lg:absolute lg:inset-y-0 lg:max-w-7xl lg:mx-auto lg:w-full">
+          <div aria-hidden="true" className="pointer-events-none lg:absolute lg:inset-y-0 lg:max-w-6xl lg:mx-auto lg:w-full">
             <div className="absolute transform sm:left-1/2 sm:top-0 sm:translate-x-8 lg:left-1/2 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-8">
               <div className="flex items-center space-x-6 lg:space-x-8">
                 <div className="flex-shrink-0 grid grid-cols-1 gap-y-6 lg:gap-y-8">
@@ -42,7 +42,7 @@ function Landing(){
                 </div>
                 <div className="flex-shrink-0 grid grid-cols-1 gap-y-6 lg:gap-y-8">
                   <div className="w-44 h-64 rounded-lg overflow-hidden">
-                    <img src="./images/academic.jpg" alt="" className="w-full h-full object-center object-cover"/>
+                    <img src="./images/Muxaadaro.jpg" alt="" className="w-full h-full object-center object-cover"/>
                   </div>
                   <div className="w-44 h-64 rounded-lg overflow-hidden">
                     <img src="./images/mux.jpg" alt="" className="w-full h-full object-center object-cover"/>

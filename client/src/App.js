@@ -21,6 +21,7 @@ import loading from './Components/Loading'
 import Slider from './Components/Slider'
 import checkout from './Components/Checkout'
 import addUser from './Components/Admin/Adduser'
+import adminView from './Components/Admin/adminView'
 
 
 function App() {
@@ -29,9 +30,6 @@ function App() {
       <Router>
         <Header/>
         <Switch>
-          {/* <Landing/>
-          <Checkout/>
-          <Checkout/> */}
         <Route exact path = "/"> 
             <Landing/>
             <Evants/>
@@ -44,15 +42,16 @@ function App() {
         <Route exact path = "/cartlist" component = {Cartlist} />
         <Route exact path = "/pricing" component = {pricing}/>
         <Route exact path = "/pricing/:id" component = {pricing}/>
-        <Route exact path = "/evantlist" component = {Evantlist}/>
+        <Route exact path = "/eventlist" component = {Evantlist}/>
         <Route exact path = "/contact" component = {contact} />
         <Route exact path = "/Loading" component = {loading} />
         <Route exact path = "/checkout" component = {checkout}/>
         <Route exact path = "/singup" component = {addUser} />
         <Route exact path = "/singup/:id" component = {addUser} />
+        <Route exact path = "/view" component = {adminView} />
 
       </Switch>
-      <Footer/>
+      {/* <Footer/> */}
       </Router>
       
     </div>

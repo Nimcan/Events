@@ -1,9 +1,13 @@
+import { BrowserRoute as Router, Link } from "react-router-dom";
+// import Testomonial from "./Testomonial";
 
 
 
 function Header(){
+
     return (
-        <div >
+
+        <div className = "">
      
       {/* The Resposive Header */}
 
@@ -67,16 +71,18 @@ function Header(){
 
   
       {/* Normal Header */}
-  <header className="relative bg-white">
-  
-
+  <header className="relative bg-white ">
     <nav aria-label="Top" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="border-b border-gray-200">
         <div className="h-16 flex items-center">
+
           {/* <!-- Mobile menu toggle, controls the 'mobileMenuOpen' state. --> */}
+
           <button type="button" className="bg-white p-2 rounded-md text-gray-400 lg:hidden">
             <span className="sr-only">Open menu</span>
+
             {/* <!-- Heroicon name: outline/menu --> */}
+            
             <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
@@ -86,8 +92,9 @@ function Header(){
           
           <div className="ml-4 flex lg:ml-0">
             <a href="#">
-              <span className="sr-only">Workflow</span>
+              <span className="sr-only">Workflow</span> <Link to = {"/"}>
               <img className="h-12 w-auto" src="./images/event.png" alt=""/>
+              </Link>
             </a>
           </div>
 
@@ -99,7 +106,7 @@ function Header(){
                 <div className="relative flex">
                   {/* <!-- Item active: "border-indigo-600 text-indigo-600", Item inactive: "border-transparent text-gray-700 hover:text-gray-800" --> */}
                   <button type="button" className="border-transparent text-gray-700 hover:text-gray-800 relative z-10 flex items-center transition-colors ease-out duration-200 text-sm font-medium border-b-2 -mb-px pt-px" aria-expanded="false">
-                    Home
+                    <Link to = {"/"}> Home </Link>
                   </button>
                 </div>
 
@@ -116,7 +123,7 @@ function Header(){
                 <div className="relative flex">
                   {/* <!-- Item active: "border-indigo-600 text-indigo-600", Item inactive: "border-transparent text-gray-700 hover:text-gray-800" --> */}
                   <button type="button" className="border-transparent text-gray-700 hover:text-gray-800 relative z-10 flex items-center transition-colors ease-out duration-200 text-sm font-medium border-b-2 -mb-px pt-px" aria-expanded="false">
-                    About
+                    <Link to = {"/"}> About </Link> 
                   </button>
                 </div>                
               </div>
@@ -129,9 +136,9 @@ function Header(){
 
           <div className="ml-auto flex items-center">
             <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-              <a href="#" className="text-sm font-medium text-gray-700 hover:text-gray-800">Sign in</a>
+              <a href="#" className="text-sm font-medium text-gray-700 hover:text-gray-800"><Link to = {"/Login"}> Sign in </Link></a>
               <span className="h-6 w-px bg-gray-200" aria-hidden="true"></span>
-              <a href="#" className="text-sm font-medium text-gray-700 hover:text-gray-800">Create account</a>
+              <a href="#" className="text-sm font-medium text-gray-700 hover:text-gray-800"><Link to = {"/singup"}> Create account </Link> </a>
             </div>
 
           
@@ -149,16 +156,19 @@ function Header(){
 
             {/* <!-- Cart --> */}
             <div className="ml-4 flow-root lg:ml-6">
+              <Link to = {"/checkout"}>
               <a href="#" className="group -m-2 p-2 flex items-center">
-
+              
                 {/* <!-- Heroicon name: outline/shopping-bag --> */}
 
                 <svg className="flex-shrink-0 h-6 w-6 text-gray-400 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                 </svg>
                 <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">0</span>
-                <span className="sr-only">items in cart, view bag</span>
+                <span className="sr-only"><Link to = {"/checkout"}></Link></span>
+                
               </a>
+              </Link>
             </div>
           </div>
         </div>
