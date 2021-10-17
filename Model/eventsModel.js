@@ -11,7 +11,10 @@ const eventModelSchema = mongoose.Schema({
         type:String,
         required:true
     },
-    eventType:String,
+    eventType:{
+        type:String,
+        enum:["networking", "tech","religeous", "book-fair", "party"]
+    },
     price:String,
     Time:String,
     qty:Number,

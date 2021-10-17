@@ -1,5 +1,5 @@
 import { BrowserRoute as Router, Link } from "react-router-dom";
-// import Testomonial from "./Testomonial";
+import Testomonial from "./Testomonial";
 
 
 
@@ -128,7 +128,7 @@ function Header(){
                 </div>                
               </div>
 
-              <a href="#" className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800">Events</a>
+              <a href="#event" className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800">Events</a>
 
               <a href="#" className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800">Testomonial</a>
             </div>
@@ -177,6 +177,12 @@ function Header(){
   </header>
 </div>
     )
+
+    function Go(){
+      return(
+        <Testomonial/>
+      )
+    }
 }
 
 

@@ -35,6 +35,7 @@ app.use(bodyParser());
 // initialise cors
 app.use(cors())
 
+app.use(express.static("images"))
 
 // use the routes
 app.use("/event", eventRoute)

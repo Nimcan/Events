@@ -76,11 +76,11 @@ function Add(){
                     <div className="col-span-6 sm:col-span-3">
                       <label for="country" className="block text-sm font-medium text-gray-700">Event Type</label>
                       <select id="country" name="country" autocomplete="country" className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" onChange = {(e)=> setEvent({...event, eventType:e.target.value})}>
-                        <option>Tech events</option>
-                        <option>Networking events</option>
-                        <option>Religeous events</option>
-                        <option>Academic / Book fair events</option>
-                        <option>Party events</option>
+                        <option value = "tech">Tech events</option>
+                        <option value = "networking">Networking events</option>
+                        <option value = "religeous">Religeous events</option>
+                        <option value = "book-fair">Academic / Book fair events</option>
+                        <option value = "party">Party events</option>
                       </select>
                     </div>
       

@@ -1,30 +1,35 @@
+import { BrowserRoute as Router, Link } from "react-router-dom";
 import Addevant from './Addevant'
+import Userlist from './Userlist'
+import {useState} from 'react'
 
 
 function View(){
+   const [tab, setTab] = useState("")
+
     return(
-        <div className=" flex flex-auto">
+        <div className=" flex flex-cols-2">
             
-        <div className="h-screen w-48 px-4 ">
+        <div className="w-48 px-4 bg-gray-200">
    <div className="h-3/4 flex flex-col justify-around text-gray-500">
       <h3 className="pl-1 text-sm flex items-center py-2 mb-2 hover:bg-gray-100 hover:text-gray-700 transition duration-200 ease-in">
          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="black">
             <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
          </svg>
-         <a className="hover:text-black transition duration-200 ease-linear" href="#">Home</a>
+         <a className="hover:text-black transition duration-200 ease-linear" href="#" onClick = {(e)=> setTab("Add")}>Add Event</a>
       </h3>
       <h3 className="pl-1 text-sm flex items-center py-2 mb-2 hover:bg-gray-100 hover:text-gray-700 transition duration-200 ease-in">
          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="black">
             <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
          </svg>
-         <a className="hover:text-black transition duration-200 ease-linear" href="#">Dashboard</a>
+         <a className="hover:text-black transition duration-200 ease-linear" href="#" onClick = {(e)=> setTab("list")}>User List</a>
       </h3>
       <h3 className="pl-1 text-sm flex items-center py-2 mb-2 hover:bg-gray-100 hover:text-gray-700 transition duration-200 ease-in">
          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="black">
             <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z" />
             <path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z" />
          </svg>
-         <a className="hover:text-black transition duration-200 ease-linear" href="#">Comments</a>
+         <a className="hover:text-black transition duration-200 ease-linear" href="#">Messages</a>
       </h3>
       <h3 className="pl-1 text-sm flex items-center py-2 mb-2 hover:bg-gray-100 hover:text-gray-700 transition duration-200 ease-in">
          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="black">
@@ -50,13 +55,30 @@ function View(){
 
             {/* halkan ayuu imanayaa content-ku */}
 
-            <div className = "m-auto h-screen w-full">
-                <Addevant/>
+            <div className = "m-auto h-screen w-full overflow-scroll">
+            {tab === "Add" && Add()}
+            {tab === "list" && List()}
             </div>
 
 </div>
 
     )
+
+    function Add(){
+       return (
+          <>
+         <Addevant/>
+         </>
+       )
+    }
+
+    function List(){
+       return(
+          <>
+          <Userlist/>
+          </>
+       )
+    }
 }
 
 

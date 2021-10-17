@@ -1,6 +1,6 @@
 import axios from "axios"
 import {useEffect, useState} from 'react'
-import { BrowserRoute as Router, Link } from "react-router-dom";
+import { BrowserRoute as Router, Link, useParams } from "react-router-dom";
 
 
 
@@ -8,10 +8,18 @@ import { BrowserRoute as Router, Link } from "react-router-dom";
 function Show(){
   const [list, setList] = useState([])
 
-  console.log(list)
+  const {type} = useParams();
 
   useEffect(()=>{
-    axios.get("http://localhost:8000/event/events").then((res)=> setList(res.data.allEvents))
+    axios.get("http://localhost:8000/event/events").then((res)=> {
+
+      const filter = (res.data.allEvents).filter(function(element){
+        return type === element.eventType
+      })
+      setList(filter)
+    })
+    
+    console.log(list)
   },[])
     return(
         <div className="bg-white">
@@ -24,7 +32,7 @@ function Show(){
       {list.map((all)=>
       <div className="group relative">
         <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-lg overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none">
-          <img src={all.image} alt="Front of men&#039;s Basic Tee in black." className="w-full h-full object-center object-cover lg:w-full lg:h-full"/>
+          <img src={`http://localhost:8000/${all.image}`} alt="Front of men&#039;s Basic Tee in black." className="w-full h-full object-center object-cover lg:w-full lg:h-full"/>
         </div>
         <div className="mt-4 flex justify-between">
           <div>

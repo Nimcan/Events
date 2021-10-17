@@ -32,6 +32,7 @@ function App() {
         <Switch>
         <Route exact path = "/"> 
             <Landing/>
+            
             <Evants/>
             <Testomonial/>
             <Slider/>
@@ -43,6 +44,7 @@ function App() {
         <Route exact path = "/pricing" component = {pricing}/>
         <Route exact path = "/pricing/:id" component = {pricing}/>
         <Route exact path = "/eventlist" component = {Evantlist}/>
+        <Route exact path = "/eventlist/:type" component = {Evantlist}/>
         <Route exact path = "/contact" component = {contact} />
         <Route exact path = "/Loading" component = {loading} />
         <Route exact path = "/checkout" component = {checkout}/>
@@ -51,7 +53,7 @@ function App() {
         <Route exact path = "/view" component = {adminView} />
 
       </Switch>
-      {/* <Footer/> */}
+      <Footer/>
       </Router>
       
     </div>

@@ -27,14 +27,8 @@ function User(){
   }
 
   function Update(){
-
-    const Data = new FormData();
-    Data.append("userName", user.userName);
-    Data.append("email", user.email);
-    Data.append("tittle", user.tittle);
-    Data.append("password", user.password);
-    axios.put(`http://localhost:8000/user/${id}`, Data).then((res)=> console.log(res))
-    console.log(Data)
+    axios.put(`http://localhost:8000/user/${id}`, user).then((res)=> console.log(res))
+    console.log(user)
   }
 
     return(
