@@ -5,27 +5,53 @@ import {useParams} from 'react-router'
 
 function Pricing(){
   // all event data
-  const [data, setData] = useState({})
+  const [data, setData] = useState([])
   console.log(data)
 
   // event cards quantity
-  const [qty, setQty] = useState(0)
+  const [quantity, setQuantity] = useState(0)
 
   // order form toggle
-  const [toggle, setToggle] = useState(false)
 
   const {id} = useParams();
 
   useEffect(()=>{
-    axios.get(`http://localhost:8000/event/events/${id}`).then((res)=> setData(res.data.findEvent))
+    id !== undefined && (
+    axios.get(`http://localhost:8000/event/events/${id}`).then((res)=> setData(res.data.findEvent)))
   },[])
+
+
+  // add to cart function
+
+  function addToCart(data){
+    console.log("Marhaba")
+    if(localStorage.getItem("cart") === undefined || localStorage.getItem("cart") === null)
+    {
+      data.qty = quantity
+      const cart = [data]
+      localStorage.setItem("cart", JSON.stringify(cart))
+    }else {
+      const cards = JSON.parse(localStorage.getItem("cart"))
+      cards.map((card, key)=>{
+        if(card._id === data._id){
+          cards[key].qty = data.qty;
+          localStorage.setItem("cart", JSON.stringify(cards))
+        }else {
+          const invitation = [...cards, data]
+          localStorage.setItem("cart", JSON.stringify(invitation)) 
+
+        }
+      })
+      
+    }
+  }
 
 
     return(
         <section class="text-gray-600 body-font overflow-hidden">
   <div class="container px-5 py-6 mx-auto">
     <div class="lg:w-4/5 mx-auto flex flex-wrap">
-      <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src="https://dummyimage.com/400x400"/>
+      <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src= {`http://localhost:8000/${data.image}`}/>
       <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
         <h2 class="text-sm title-font text-gray-500 tracking-widest">{data.eventType}</h2>
         <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">{data.eventName}</h1>
@@ -72,15 +98,16 @@ function Pricing(){
           <div class="flex">
             <span class="mr-3">Quantity</span>
             
-            <button class="rounded-half w-6 h-6 focus:outline-none " onClick = {(e)=>  setQty(qty+1)} ><i class="fas fa-plus-square text-2xl"></i></button>
-            <button class="font-medium ml-1  w-6 h-6 focus:outline-none">{qty}</button>
-            <button class="ml-1 text-bold m-auto rounded-half w-6 h-6 focus:outline-none" onClick = {(e)=>  setQty(qty-1)}><i class="fas fa-minus-square text-2xl"></i></button>
+            <button class="rounded-half w-6 h-6 focus:outline-none " onClick = {(e)=>data.qty > quantity && setQuantity(quantity+1)} ><i class="fas fa-plus-square text-2xl"></i></button>
+            <button class="font-medium ml-1  w-6 h-6 focus:outline-none">{quantity}</button>
+            <button class="ml-1 text-bold m-auto rounded-half w-6 h-6 focus:outline-none" onClick = {(e)=>quantity > 0 && setQuantity(quantity-1)}><i class="fas fa-minus-square text-2xl"></i></button>
           </div>
-        
+          {data.qty === 0 && <h1 className = "text-center ml-10 text-red-500">"We are so sorry all cards and seats are Ordered"</h1>}
         </div>
         <div class="flex">
-          <span class="title-font font-medium text-2xl text-gray-900">$ {data.price}</span>
-          <button class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Order</button>
+          <span class="title-font font-medium text-2xl text-gray-900">${data.price}</span>
+          {data.qty === 0 ? data.price != "free" :
+          <button class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" onClick = {()=> addToCart(data)}>Order</button>}
           <button class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
             <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
               <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>

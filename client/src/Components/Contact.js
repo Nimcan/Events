@@ -1,4 +1,4 @@
-// import axios from "axios"
+import axios from "axios"
 import {useState} from 'react'
 
 
@@ -9,6 +9,10 @@ function Contact(){
     email:"",
     feedback:""
   })
+
+  function Save(){
+    axios.post("http://localhost:8000/message/messages", message).then((res)=> console.log(res))
+  }
 
 
     return(
@@ -39,7 +43,7 @@ function Contact(){
           </div>
         </div>
         <div class="p-2 w-full">
-          <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Send</button>
+          <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg" onClick = {(e)=> Save()} >Send</button>
         </div>
        </div>
     </div>

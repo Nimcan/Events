@@ -1,6 +1,8 @@
 import { BrowserRoute as Router, Link } from "react-router-dom";
+import PrivateRoute from "../../privateRoute";
 import Addevant from './Addevant'
 import Userlist from './Userlist'
+import Adduser from './Adduser'
 import {useState} from 'react'
 
 
@@ -29,7 +31,7 @@ function View(){
             <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z" />
             <path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z" />
          </svg>
-         <a className="hover:text-black transition duration-200 ease-linear" href="#">Messages</a>
+         <a className="hover:text-black transition duration-200 ease-linear" href="#" onClick = {(e)=> setTab("create")}>Create User</a>
       </h3>
       <h3 className="pl-1 text-sm flex items-center py-2 mb-2 hover:bg-gray-100 hover:text-gray-700 transition duration-200 ease-in">
          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="black">
@@ -58,6 +60,9 @@ function View(){
             <div className = "m-auto h-screen w-full overflow-scroll">
             {tab === "Add" && Add()}
             {tab === "list" && List()}
+            {/* <PrivateRoute> */}
+            {tab === "create" && Create()}
+            {/* </PrivateRoute> */}
             </div>
 
 </div>
@@ -78,6 +83,10 @@ function View(){
           <Userlist/>
           </>
        )
+    }
+
+    function Create(){
+       return <Adduser/>
     }
 }
 

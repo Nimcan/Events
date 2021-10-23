@@ -1,4 +1,4 @@
-// import { BrowserRoute as Router, Link } from "react-router-dom";
+import { BrowserRoute as Router, Link } from "react-router-dom";
 
 
 function Footer(){
@@ -13,7 +13,7 @@ function Footer(){
                     <a href="#" class="px-4 text-sm">About</a>
                     <a href="#" class="px-4 text-sm">Blog</a>
                     <a href="#" class="px-4 text-sm">News</a>
-                    <a href="#" class="px-4 text-sm">Contact</a>
+                    <a href="#" class="px-4 text-sm"><Link to = {"/contact"}> Contact </Link></a>
                   </div>
               </div>
           </div>

@@ -1,3 +1,5 @@
+import axios from "axios"
+import {useState} from 'react'
 
 
 
@@ -6,6 +8,17 @@
 
 
 function Login(){
+  const [user, setUser] = useState({
+    email:"",
+    password:""
+  })
+
+  function Loggin(){
+    axios.post("http://localhost:8000/user/users", user).then((res)=> {
+      localStorage.setItem("user", JSON.stringify(res.data.user));
+      localStorage.setItem("token", JSON.stringify(res.data.token));
+    })
+  }
     return(
         <div className="min-h-screen flex items-center justify-center bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
@@ -21,11 +34,11 @@ function Login(){
             <div className="rounded-md shadow-sm -space-y-px">
               <div>
                 <label for="email-address" className="sr-only">Email address</label>
-                <input id="email-address" name="email" type="email" autocomplete="email" required className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address"/>
+                <input id="email-address" name="email" type="email" autocomplete="email" required className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address" onChange={(e)=> setUser({...user, email:e.target.value})}/>
               </div>
               <div>
                 <label for="password" className="sr-only">Password</label>
-                <input id="password" name="password" type="password" autocomplete="current-password" required className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Password"/>
+                <input id="password" name="password" type="password" autocomplete="current-password" required className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Password" onChange={(e)=> setUser({...user, password:e.target.value})} />
               </div>
             </div>
       

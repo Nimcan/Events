@@ -130,7 +130,7 @@ function Header(){
 
               <a href="#event" className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800">Events</a>
 
-              <a href="#" className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800">Testomonial</a>
+              <a href="#test" className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800">Testomonial</a>
             </div>
           </div>
 
@@ -138,7 +138,8 @@ function Header(){
             <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
               <a href="#" className="text-sm font-medium text-gray-700 hover:text-gray-800"><Link to = {"/Login"}> Sign in </Link></a>
               <span className="h-6 w-px bg-gray-200" aria-hidden="true"></span>
-              <a href="#" className="text-sm font-medium text-gray-700 hover:text-gray-800"><Link to = {"/singup"}> Create account </Link> </a>
+              {/* <a href="#" className="text-sm font-medium text-gray-700 hover:text-gray-800"><Link to = {"/singup"}> Create account </Link> </a> */}
+              
             </div>
 
           
@@ -177,12 +178,6 @@ function Header(){
   </header>
 </div>
     )
-
-    function Go(){
-      return(
-        <Testomonial/>
-      )
-    }
 }
 
 

@@ -27,6 +27,7 @@ const eventRoute = require("./Route/eventsRoute")
 const userRoute = require("./Route/usersRoute")
 const orderRoute = require("./Route/orderRoute");
 const reviewRouter = require("./Route/reviewRoute");
+const messagesRoute = require("./Route/messagesRoute")
 
 
 // initialise bodyParser
@@ -42,6 +43,7 @@ app.use("/event", eventRoute)
 app.use("/user", userRoute)
 app.use("/review", reviewRouter)
 app.use("/orders", orderRoute)
+app.use("/message",messagesRoute)
 
 
 const Port = process.env.PORT || 8000

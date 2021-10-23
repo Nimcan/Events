@@ -7,7 +7,7 @@ const userController = require("../Controller/usersController")
 
 const userRouter = express.Router()
 
-userRouter.route("/users").post(userController.newUser).get(userController.Find)
+userRouter.route("/users").post(userController.newUser).get(userController.Find).post(userController.loginUser)
 
 //find user by id
 userRouter.route("/users/:id").get(userController.findById)

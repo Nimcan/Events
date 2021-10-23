@@ -1,14 +1,33 @@
 
 const User = require("./../Model/usersModel")
+const bcrypt = require("bcrypt")
+const jwt = require("jsonwebtoken");
 
 
 // create new user
 
 exports.newUser = async (req, res)=>{
     try{
-        await User.create(req.body)
+        // encryp password
+        const hashPassword = await bcrypt.hash(req.body.password, 10)
+        const createUser = await User.create({
+            userName:req.body.userName,
+            email: req.body.email,
+            password:hashPassword,
+            tittle: req.body.tittle
+        })
+
+        const token = jwt.sign(
+            { id: createUser._id, role: createUser.role, email: createUser.email },
+            "EVENT_WEB",
+            {
+              expiresIn: "10h",
+            }
+          );
+
         res.status(200).json({
-            message:"user created"
+            message:"user created",
+            token
         })
     }catch (error){
         res.status(201).json({
@@ -16,6 +35,44 @@ exports.newUser = async (req, res)=>{
         })
     }
 }
+
+
+// Loggin in 
+exports.loginUser = async (req, res)=> {
+    try{
+        const user = await User.findOne({ email: req.body.email });
+
+        if (user === null) {
+          return res.status(404).send({ message: "User does not exsist" });
+        }
+
+        const compare = await bcrypt.compare(req.body.password, user.password);
+        if (compare === false) {
+          return res.status(404).send({ message: "Wrong Email or Password" });
+        }
+        user.password = undefined;
+    
+        const token = jwt.sign(
+          { id: user._id, role: user.role, email: user.email },
+          "event_web",
+          {
+            expiresIn: "10h",
+          }
+        );
+    
+        res.status(200).send({ message: "Logged in", user, token });
+    } catch(error){
+        res.status(201).json({
+            message: error.message
+        })
+    }
+}
+
+
+
+
+
+
 
 // find all users
 
@@ -65,4 +122,7 @@ exports.Edit = async (req, res)=>{
         })
     }
 }
+
+
+
 

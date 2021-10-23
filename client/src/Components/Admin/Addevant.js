@@ -27,6 +27,7 @@ function Add(){
     dataForm.append("Address", event.Address)
     dataForm.append("eventType", event.eventType)
     dataForm.append("price", event.price)
+    dataForm.append("qty", event.qty)
     dataForm.append("Time", event.Time)
     dataForm.append("image", event.image)
 
