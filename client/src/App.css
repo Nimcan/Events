@@ -60,3 +60,31 @@ scroll-behavior: smooth;
 .snap-start {
 scroll-snap-align: start;
 }
+
+
+/* orderform css */
+
+.shopping-table{
+  margin: auto;
+}
+table {
+  border-collapse: collapse;
+  width: 40%;
+    
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.proceed-btn{
+  margin-left: 60%;
+  margin-top: 30px;
+}
+
+.all-total{
+  font-weight: bold;
+  font-size: 20px;
+}

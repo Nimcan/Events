@@ -1,6 +1,7 @@
+import {useParams} from 'react-router'
 import {useEffect, useState} from 'react'
 import axios from 'axios'
-import {useParams} from 'react-router'
+
 
 function User(){
 
@@ -8,6 +9,7 @@ function User(){
     userName:"",
     email:"",
     tittle:"",
+    role:"",
     password:""
   })
 
@@ -48,6 +50,15 @@ function User(){
                   <label for="name" class="text-base leading-7 text-blueGray-500">Tittle</label>
                   <input type="name" id="name" name="name" placeholder="Enter Tittle" class="w-full px-4 py-2 mt-2 text-base text-black transition duration-500 ease-in-out transform border-transparent rounded-lg bg-blueGray-100 focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2" value = {user.tittle} onChange = {(e)=> setUser({...user, tittle:e.target.value})}/>
                 </div>
+
+                
+                    <div className="col-span-6 sm:col-span-3 mt-4">
+                      <label for="country" className="block text-sm font-medium text-gray-700">Role</label>
+                      <select id="country" name="country" autocomplete="country" className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" onChange = {(e)=> setUser({...user, role:e.target.value})}>
+                        <option value="admin">Admin</option>
+                        <option value="user">User</option>
+                      </select>
+                    </div>
 
                 <div class="relative mt-4">
                   <label for="password" class="text-base leading-7 text-blueGray-500">Password</label>

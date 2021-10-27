@@ -30,13 +30,17 @@ function Pricing(){
       data.qty = quantity
       const cart = [data]
       localStorage.setItem("cart", JSON.stringify(cart))
-    }else {
+    }
+    else {
+      console.log("hi")
       const cards = JSON.parse(localStorage.getItem("cart"))
       cards.map((card, key)=>{
         if(card._id === data._id){
-          cards[key].qty = data.qty;
+          cards[key].qty = data.quantity;
           localStorage.setItem("cart", JSON.stringify(cards))
-        }else {
+        }
+        else {
+          
           const invitation = [...cards, data]
           localStorage.setItem("cart", JSON.stringify(invitation)) 
 

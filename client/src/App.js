@@ -24,6 +24,8 @@ import addUser from './Components/Admin/Adduser'
 import adminView from './Components/Admin/adminView'
 import Messages from './Components/Admin/Messages'
 import PrivateRoute from './privateRoute'
+import userRoute from './userRoute'
+import orderForm from './Components/orderForm'
 
 
 function App() {
@@ -40,7 +42,7 @@ function App() {
             <Slider/>
         </Route>
         <Route exact path = "/login" component ={Login}/>
-        <PrivateRoute exact path = "/Users" component = {Userlist} />
+        <Route exact path = "/Users" component = {Userlist} />
         <PrivateRoute exact path = "/Add" component = {Addevant} />
         <Route exact path = "/cartlist" component = {Cartlist} />
         <Route exact path = "/pricing" component = {pricing}/>
@@ -51,9 +53,10 @@ function App() {
         <Route exact path = "/Loading" component = {loading} />
         <Route exact path = "/checkout" component = {checkout}/>
         <PrivateRoute exact path = "/singup" component = {addUser} />
-        <PrivateRoute exact path = "/singup/:id" component = {addUser} />
+        <Route exact path = "/singup/:id" component = {addUser} />
         <Route exact path = "/view" component = {adminView} />
         <Route exact path = "/message" component = {Messages}/>
+        <Route exact path = "/order" component = {orderForm}/>
 
       </Switch>
       <Footer/>

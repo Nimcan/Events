@@ -1,5 +1,5 @@
 import { BrowserRoute as Router, Link } from "react-router-dom";
-import Testomonial from "./Testomonial";
+// import Testomonial from "./Testomonial";
 
 
 

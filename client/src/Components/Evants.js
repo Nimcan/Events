@@ -61,7 +61,7 @@ function Events(){
               <div  className="group relative">
               <Link to = {"/eventlist/book-fair"}>
                 <div  className="relative w-full h-60 bg-white rounded-lg overflow-hidden group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-50 lg:aspect-w-1 lg:aspect-h-1">
-                  <img src="https://tailwindui.com/img/ecommerce-images/home-page-02-edition-01.jpg" alt="Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug."  className="w-full h-full object-center object-cover" />
+                  <img src="./images/academic.jpg" alt="Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug."  className="w-full h-full object-center object-cover" />
                 </div>
             
                 <p  className="sm:py-3 text-center text-base font-semibold text-gray-900">Book Fair / Academic events</p>
@@ -71,7 +71,7 @@ function Events(){
               <div  className="group relative">
               <Link to = {"/eventlist/party"}>
                 <div  className="relative w-full h-60 bg-white rounded-lg overflow-hidden group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-50 lg:aspect-w-1 lg:aspect-h-1">
-                  <img src="https://tailwindui.com/img/ecommerce-images/home-page-02-edition-02.jpg" alt="Wood table with porcelain mug, leather journal, brass pen, leather key ring, and a houseplant."  className="w-full h-full object-center object-cover"/>
+                  <img src="./images/party.jpg" alt="Wood table with porcelain mug, leather journal, brass pen, leather key ring, and a houseplant."  className="w-full h-full object-center object-cover"/>
                 </div>
            
                 <p  className="sm:py-3 text-center text-base font-semibold text-gray-900">Party Events</p>
@@ -85,6 +85,8 @@ function Events(){
     </div>
    </div>  
     )
+
+    
 }
 
 export default Events

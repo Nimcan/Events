@@ -14,6 +14,7 @@ exports.newUser = async (req, res)=>{
             userName:req.body.userName,
             email: req.body.email,
             password:hashPassword,
+            role:req.body.role,
             tittle: req.body.tittle
         })
 
@@ -43,18 +44,19 @@ exports.loginUser = async (req, res)=> {
         const user = await User.findOne({ email: req.body.email });
 
         if (user === null) {
-          return res.status(404).send({ message: "User does not exsist" });
+          return res.status(404).send({ message: "User does not exsists" });
         }
 
         const compare = await bcrypt.compare(req.body.password, user.password);
         if (compare === false) {
           return res.status(404).send({ message: "Wrong Email or Password" });
         }
+        // for security reasons
         user.password = undefined;
     
         const token = jwt.sign(
           { id: user._id, role: user.role, email: user.email },
-          "event_web",
+          "EVENT_WEB",
           {
             expiresIn: "10h",
           }

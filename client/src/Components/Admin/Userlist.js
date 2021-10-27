@@ -75,7 +75,7 @@ function List(){
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                       <Link to = {`/singup/${user._id}`}>
-                      <a href="#" className="text-indigo-600 hover:text-indigo-900" >Edit</a>
+                      <a className="text-indigo-600 hover:text-indigo-900" >Edit</a>
                       </Link>
                     </td>
                   </tr>

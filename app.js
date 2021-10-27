@@ -5,8 +5,11 @@ const express = require("express")
 //Require cors
 const cors = require("cors")
 
+// require path
+const path = require("path")
+
 //import config.env folder
-require("dotenv").config({path: "./config.env"})
+require("dotenv").config({ path: "./config.env"})
 
 //import server folder
 require("./Server")
@@ -18,8 +21,8 @@ const bodyParser = require("body-parser")
 
 
 
-// initialise express
-const app = express();
+
+
 
 
 // import routes
@@ -30,8 +33,14 @@ const reviewRouter = require("./Route/reviewRoute");
 const messagesRoute = require("./Route/messagesRoute")
 
 
+// initialise express
+const app = express();
+
+// initialise the express middleware that allow us to get data from the body
+app.use(express.json())
+
 // initialise bodyParser
-app.use(bodyParser());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // initialise cors
 app.use(cors())
