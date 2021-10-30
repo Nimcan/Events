@@ -28,7 +28,7 @@ function Events(){
                 <p  className="sm:py-3 text-center text-base font-semibold text-gray-900">Religeous Events</p>
             </Link>
            </div>
-      
+        
               <div  className="group relative">
                 <Link to = {"/eventlist/tech"}>
                 <div  className="relative w-full h-60 bg-white rounded-lg overflow-hidden group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-50 lg:aspect-w-1 lg:aspect-h-1">

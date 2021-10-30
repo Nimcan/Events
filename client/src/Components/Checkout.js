@@ -1,146 +1,220 @@
-
+import {useEffect, useState} from 'react'
+import axios from 'axios'
+import {useParams} from 'react-router-dom'
 
 
 function Order(){
+
+  // event seat quantity
+  const [quantity, setQuantity] = useState(0)
+  
+
+  const [seat, setSeat] = useState([])
+console.log(seat)
+  // order useEffect
+  const [booking, setBooking] = useState({
+    name:"",
+    email:"",
+    phone:"",
+    seat:0
+  })
+
+
+  const {id} = useParams()
+  useEffect(()=> {
+  id !== undefined &&(
+    axios.get(`http://localhost:8000/event/events/${id}`).then((res)=> setSeat(res.data.findEvent))
+  )},[])
+
+  // useEffect(()=> {
+  //   axios.get("http://localhost:8000/event/events").then((res)=>  {
+
+  //     const filter = (res.data.allEvents).filter(function(event){
+  //       return id === event._id
+            
+
+  //   }
+  //   )
+
+  //     setData(filter)
+        
+
+  //     })
+
+  // },[])
+
+
+  function Book(e){
+    e.preventDefault()
+    seat.qty = quantity
+    const form = {
+      ...booking,
+      order: seat,
+      
+    }
+    axios.post("http://localhost:8000/order/orders", form).then((res)=> console.log(res))
+  }
+
+
     return(
-        <div class="fixed inset-0 overflow-hidden" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
-  <div class="absolute inset-0 overflow-hidden">
-    {/* <!--
-      Background overlay, show/hide based on slide-over state.
 
-      Entering: "ease-in-out duration-500"
-        From: "opacity-0"
-        To: "opacity-100"
-      Leaving: "ease-in-out duration-500"
-        From: "opacity-100"
-        To: "opacity-0"
-    --> */}
-    <div class="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+     <div className="bg-white">
+      {/* Background color split screen for large screens */}
+      <div className="hidden lg:block fixed top-0 left-0 w-1/2 h-full bg-gray-200" aria-hidden="true" />
+      <div className="hidden lg:block fixed top-0 right-0 w-1/2 h-full bg-indigo-900" aria-hidden="true" />
 
-    <div class="fixed inset-y-0 right-0 pl-10 max-w-full flex">
-      {/* <!--
-        Slide-over panel, show/hide based on slide-over state.
+      <div className="relative grid grid-cols-1 gap-x-16 max-w-7xl mx-auto lg:px-8 lg:grid-cols-2 lg:pt-6">
+        <h1 className="sr-only">Checkout</h1>
 
-        Entering: "transform transition ease-in-out duration-500 sm:duration-700"
-          From: "translate-x-full"
-          To: "translate-x-0"
-        Leaving: "transform transition ease-in-out duration-500 sm:duration-700"
-          From: "translate-x-0"
-          To: "translate-x-full"
-      --> */}
-      <div class="w-screen max-w-md">
-        <div class="h-full flex flex-col bg-white shadow-xl overflow-y-scroll">
-          <div class="flex-1 py-6 overflow-y-auto px-4 sm:px-6">
-            <div class="flex items-start justify-between">
-              <h2 class="text-lg font-medium text-gray-900" id="slide-over-title">
-                Shopping cart
-              </h2>
-              <div class="ml-3 h-7 flex items-center">
-                <button type="button" class="-m-2 p-2 text-gray-400 hover:text-gray-500">
-                  <span class="sr-only">Close panel</span>
-                  {/* <!-- Heroicon name: outline/x --> */}
-                  <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                  </svg>
+        <section
+          aria-labelledby="summary-heading"
+          className="bg-indigo-900 text-indigo-300 py-12 md:px-10 lg:max-w-lg lg:w-full lg:mx-auto lg:px-0 lg:pt-0 lg:pb-24 lg:bg-transparent lg:row-start-1 lg:col-start-2"
+        >
+          {/* {data.map((event)=>  */}
+          <div className="max-w-2xl mx-auto px-4 lg:max-w-none lg:px-0">
+            <h2 id="summary-heading" className="sr-only">
+              Order summary
+            </h2>
+          
+            <dl>
+              <dt className="text-sm font-medium">{seat.eventType}</dt>
+              <dd className="mt-1 text-3xl font-extrabold text-white">{seat.eventName}</dd>
+            </dl>
+
+            <ul role="list" className="text-sm font-medium divide-y divide-white divide-opacity-10">
+              
+                <li className="flex items-start py-6 space-x-4">
+                  <img
+                    src={`http://localhost:8000/${seat.image}`}
+                    alt="photo"
+                    className="flex-none w-60 h-40 rounded-md object-center object-cover"/>
+                  <div className="flex-auto space-y-1">
+                    <h3 className="text-white">{seat.name}</h3>
+                    {/* <p>color</p>
+                    <p>size</p> */}
+                  </div>
+                </li>
+            </ul>
+
+            <dl className="text-sm font-medium space-y-6 border-t border-white border-opacity-10 pt-6">
+              <div className="flex items-center gap-2 ">
+                <dt><i class="fas fa-map-marker-alt text-2xl"></i></dt>
+                <dd className = "text-2xl">  {seat.Address}</dd>
+              </div>
+
+              <div className="flex items-center gap-2 ">
+                <dt><i class="fas fa-stopwatch text-2xl"></i> </dt>
+                <dd className = "text-2xl">  {seat.Time} </dd>
+              </div>
+
+              <div className="flex items-center gap-3 ">
+                <dt><i class="fas fa-dollar-sign text-2xl"></i></dt>
+                <dd className ="text-2xl">{seat.price}</dd>
+              </div>
+            </dl>
+            
+          </div>
+          {/* )} */}
+        </section>
+
+        <section
+          aria-labelledby="payment-and-shipping-heading"
+          className="py-16 lg:max-w-lg lg:w-full lg:mx-auto lg:pt-0 lg:pb-24 lg:row-start-1 lg:col-start-1"
+        >
+          <h2 id="payment-and-shipping-heading" className="sr-only">
+            Payment and shipping detailss
+          </h2>
+
+          <form>
+            <div className="max-w-2xl mx-auto px-4 lg:max-w-none lg:px-0">
+              <div>
+                <h3 id="contact-info-heading" className="text-lg font-medium text-gray-900">
+                  Booking information
+                </h3>
+
+                  {/* Attendees Name */}
+                <div className="mt-6">
+                  <label htmlFor="email-address" className="block text-sm font-medium text-gray-700">
+                    Name
+                  </label>
+                  <div className="mt-1">
+                    <input
+                      type="name"
+                      id="name-address"
+                      name="name-address"
+                      autoComplete="name"
+                      className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm p-2"
+                      onChange = {(e)=> setBooking({...booking, name:e.target.value})}
+                    />
+                  </div>
+                </div>
+
+                {/* Persons Email */}
+
+                <div className="mt-6">
+                  <label htmlFor="email-address" className="block text-sm font-medium text-gray-700">
+                    Email address
+                  </label>
+                  <div className="mt-1">
+                    <input
+                      type="email"
+                      id="email-address"
+                      name="email-address"
+                      autoComplete="email"
+                      className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm p-2"
+                      onChange = {(e)=> setBooking({...booking, email:e.target.value})}
+                   />
+                  </div>
+                </div>
+
+                {/* Phone number */}
+
+                
+                <div className="mt-6">
+                  <label htmlFor="phone-address" className="block text-sm font-medium text-gray-700">
+                    Phone Number
+                  </label>
+                  <div className="mt-1">
+                    <input
+                      type="phone"
+                      id="phone-address"
+                      name="phone-address"
+                      autoComplete="phone"
+                      className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm p-2"
+                      onChange = {(e)=> setBooking({...booking, phone:e.target.value})}
+                    />
+                  </div>
+                </div>
+
+                {/* number of seats */}
+                <div className="mt-6">
+                  <label htmlFor="seat-address" className="block text-sm font-medium text-gray-700">
+                    Number of seats
+                  </label>
+                  <div className="mt-1">
+                    <div className="flex gap-2 content-center	pt-2">
+                    <i class="fas fa-minus-square text-2xl pt-1"onClick = {(e)=> quantity > 0 && setQuantity(quantity-1)}></i>
+                    <h4 className="text-2xl top-0">{quantity}</h4>
+                    <i class="fas fa-plus-square text-2xl pt-1" onClick={(e)=>seat.qty > quantity && setQuantity(quantity+1)} ></i>
+                </div>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-10 flex justify-end pt-6 border-t border-gray-200">
+                <button
+                  type="submit"
+                  className="bg-indigo-600 border border-transparent rounded-md shadow-sm py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500"
+                  onClick = {(e)=> Book(e)}
+                   >
+                  Pay now
                 </button>
               </div>
             </div>
-
-            <div class="mt-8">
-              <div class="flow-root">
-                <ul role="list" class="-my-6 divide-y divide-gray-200">
-                  <li class="py-6 flex">
-                    <div class="flex-shrink-0 w-24 h-24 border border-gray-200 rounded-md overflow-hidden">
-                      <img src="https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg" alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt." class="w-full h-full object-center object-cover"/>
-                    </div>
-
-                    <div class="ml-4 flex-1 flex flex-col">
-                      <div>
-                        <div class="flex justify-between text-base font-medium text-gray-900">
-                          <h3>
-                            <a href="#">
-                              Throwback Hip Bag
-                            </a>
-                          </h3>
-                          <p class="ml-4">
-                            $90.00
-                          </p>
-                        </div>
-                        <p class="mt-1 text-sm text-gray-500">
-                          Salmon
-                        </p>
-                      </div>
-                      <div class="flex-1 flex items-end justify-between text-sm">
-                        <p class="text-gray-500">
-                          Qty 1
-                        </p>
-
-                        <div class="flex">
-                          <button type="button" class="font-medium text-indigo-600 hover:text-indigo-500">Remove</button>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-
-                  <li class="py-6 flex">
-                    <div class="flex-shrink-0 w-24 h-24 border border-gray-200 rounded-md overflow-hidden">
-                      <img src="https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg" alt="Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch." class="w-full h-full object-center object-cover"/>
-                    </div>
-
-                    <div class="ml-4 flex-1 flex flex-col">
-                      <div>
-                        <div class="flex justify-between text-base font-medium text-gray-900">
-                          <h3>
-                            <a href="#">
-                              Medium Stuff Satchel
-                            </a>
-                          </h3>
-                          <p class="ml-4">
-                            $32.00
-                          </p>
-                        </div>
-                        <p class="mt-1 text-sm text-gray-500">
-                          Blue
-                        </p>
-                      </div>
-                      <div class="flex-1 flex items-end justify-between text-sm">
-                        <p class="text-gray-500">
-                          Qty 1
-                        </p>
-
-                        <div class="flex">
-                          <button type="button" class="font-medium text-indigo-600 hover:text-indigo-500">Remove</button>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-
-                  {/* <!-- More products... --> */}
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div class="border-t border-gray-200 py-6 px-4 sm:px-6">
-            <div class="flex justify-between text-base font-medium text-gray-900">
-              <p>Subtotal</p>
-              <p>$262.00</p>
-            </div>
-            <p class="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
-            <div class="mt-6">
-              <a href="#" class="flex justify-center items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">Checkout</a>
-            </div>
-            <div class="mt-6 flex justify-center text-sm text-center text-gray-500">
-              <p>
-                or <button type="button" class="text-indigo-600 font-medium hover:text-indigo-500">Continue Shopping<span aria-hidden="true"> &rarr;</span></button>
-              </p>
-            </div>
-          </div>
-        </div>
+          </form>
+        </section>
       </div>
     </div>
-  </div>
-</div>
+  
     )
 }
 

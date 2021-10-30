@@ -51,7 +51,7 @@ app.use(express.static("images"))
 app.use("/event", eventRoute)
 app.use("/user", userRoute)
 app.use("/review", reviewRouter)
-app.use("/orders", orderRoute)
+app.use("/order", orderRoute)
 app.use("/message",messagesRoute)
 
 

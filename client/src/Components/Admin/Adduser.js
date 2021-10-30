@@ -55,6 +55,7 @@ function User(){
                     <div className="col-span-6 sm:col-span-3 mt-4">
                       <label for="country" className="block text-sm font-medium text-gray-700">Role</label>
                       <select id="country" name="country" autocomplete="country" className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" onChange = {(e)=> setUser({...user, role:e.target.value})}>
+                        <option value="admin"></option>
                         <option value="admin">Admin</option>
                         <option value="user">User</option>
                       </select>

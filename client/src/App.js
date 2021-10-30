@@ -52,6 +52,7 @@ function App() {
         <Route exact path = "/contact" component = {contact} />
         <Route exact path = "/Loading" component = {loading} />
         <Route exact path = "/checkout" component = {checkout}/>
+        <Route exact path = "/checkout/:id" component = {checkout}/>
         <PrivateRoute exact path = "/singup" component = {addUser} />
         <Route exact path = "/singup/:id" component = {addUser} />
         <Route exact path = "/view" component = {adminView} />

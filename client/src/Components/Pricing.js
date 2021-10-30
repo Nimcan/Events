@@ -1,15 +1,14 @@
 import axios  from "axios"
 import {useState, useEffect} from 'react'
-import {useParams} from 'react-router'
+import {Link,useParams} from 'react-router-dom'
 
 
 function Pricing(){
   // all event data
   const [data, setData] = useState([])
-  console.log(data)
 
   // event cards quantity
-  const [quantity, setQuantity] = useState(0)
+  // const [quantity, setQuantity] = useState(0)
 
   // order form toggle
 
@@ -23,32 +22,32 @@ function Pricing(){
 
   // add to cart function
 
-  function addToCart(data){
-    console.log("Marhaba")
-    if(localStorage.getItem("cart") === undefined || localStorage.getItem("cart") === null)
-    {
-      data.qty = quantity
-      const cart = [data]
-      localStorage.setItem("cart", JSON.stringify(cart))
-    }
-    else {
-      console.log("hi")
-      const cards = JSON.parse(localStorage.getItem("cart"))
-      cards.map((card, key)=>{
-        if(card._id === data._id){
-          cards[key].qty = data.quantity;
-          localStorage.setItem("cart", JSON.stringify(cards))
-        }
-        else {
+  // function addToCart(data){
+  //   console.log("Marhaba")
+  //   if(localStorage.getItem("cart") === undefined || localStorage.getItem("cart") === null)
+  //   {
+  //     data.qty = quantity
+  //     const cart = [data]
+  //     localStorage.setItem("cart", JSON.stringify(cart))
+  //   }
+  //   else {
+  //     console.log("hi")
+  //     const cards = JSON.parse(localStorage.getItem("cart"))
+  //     cards.map((card, key)=>{
+  //       if(card._id === data._id){
+  //         cards[key].qty = data.quantity;
+  //         localStorage.setItem("cart", JSON.stringify(cards))
+  //       }
+  //       else {
           
-          const invitation = [...cards, data]
-          localStorage.setItem("cart", JSON.stringify(invitation)) 
+  //         const invitation = [...cards, data]
+  //         localStorage.setItem("cart", JSON.stringify(invitation)) 
 
-        }
-      })
+  //       }
+  //     })
       
-    }
-  }
+  //   }
+  // }
 
 
     return(
@@ -100,18 +99,19 @@ function Pricing(){
         <i class="fas fa-stopwatch"></i> {data.Time}</p>
         <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
           <div class="flex">
-            <span class="mr-3">Quantity</span>
+            <span class="mr-3">Quantity :-</span> 
+            <h1><span className="font-bold ">{data.qty} </span>"Seats/ Tickets"</h1>
             
-            <button class="rounded-half w-6 h-6 focus:outline-none " onClick = {(e)=>data.qty > quantity && setQuantity(quantity+1)} ><i class="fas fa-plus-square text-2xl"></i></button>
+            {/* <button class="rounded-half w-6 h-6 focus:outline-none " onClick = {(e)=>data.qty > quantity && setQuantity(quantity+1)} ><i class="fas fa-plus-square text-2xl"></i></button>
             <button class="font-medium ml-1  w-6 h-6 focus:outline-none">{quantity}</button>
-            <button class="ml-1 text-bold m-auto rounded-half w-6 h-6 focus:outline-none" onClick = {(e)=>quantity > 0 && setQuantity(quantity-1)}><i class="fas fa-minus-square text-2xl"></i></button>
+            <button class="ml-1 text-bold m-auto rounded-half w-6 h-6 focus:outline-none" onClick = {(e)=>quantity > 0 && setQuantity(quantity-1)}><i class="fas fa-minus-square text-2xl"></i></button> */}
           </div>
           {data.qty === 0 && <h1 className = "text-center ml-10 text-red-500">"We are so sorry all cards and seats are Ordered"</h1>}
         </div>
         <div class="flex">
           <span class="title-font font-medium text-2xl text-gray-900">${data.price}</span>
           {data.qty === 0 ? data.price != "free" :
-          <button class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" onClick = {()=> addToCart(data)}>Order</button>}
+          <button class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" ><Link to = {`/checkout/${id}`}>Book</Link></button>}
           <button class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
             <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
               <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>

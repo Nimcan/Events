@@ -4,57 +4,86 @@
 function cart(){
     return(
 
-        <section class="text-blueGray-600 ">
-        <div class="container px-5 py-24 mx-auto">
-          <div class="w-full mx-auto overflow-auto lg:w-2/3">
-            <table class="w-full text-left whitespace-no-wrap table-auto">
-              <thead>
-                <tr>
-                  <th class="px-4 py-2 text-sm font-medium tracking-widest text-blueGray-500 title-font"> One</th>
-                  <th class="px-4 py-2 text-sm font-medium tracking-widest text-blueGray-500 title-font"> Two</th>
-                  <th class="px-4 py-2 text-sm font-medium tracking-widest text-blueGray-500 title-font"> Three</th>
-                  <th class="px-4 py-2 text-sm font-medium tracking-widest text-blueGray-500 title-font"> Four</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="items-center">
-                  <td class="px-4 py-2 text-black bg-blueGray-50">Row</td>
-                  <td class="px-4 py-2 text-black bg-blueGray-50">00 Mb/s</td>
-                  <td class="px-4 py-2 text-black bg-blueGray-50">00 GB</td>
-                  <td class="px-4 py-2 text-lg bg-blueGray-50">
-                    <button role="button" class="px-4 py-2 mx-auto text-base font-medium text-blue-600 transition duration-500 ease-in-out transform bg-blue-100 rounded-lg hover:bg-blue-300 focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2">Buy Now </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="px-4 py-2 border-t-2 border-blueGray-200 ">Row</td>
-                  <td class="px-4 py-2 border-t-2 border-blueGray-200">00 Mb/s</td>
-                  <td class="px-4 py-2 border-t-2 border-blueGray-200">00 GB</td>
-                  <td class="px-4 py-2 text-lg text-blueGray-900 border-t-2 border-blueGray-200">
-                    <button role="button" class="px-4 py-2 mx-auto text-base font-medium text-blue-600 transition duration-500 ease-in-out transform bg-blue-100 rounded-lg hover:bg-blue-300 focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2">Buy Now </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="px-4 py-2 text-black border-t-2 border-blueGray-200 bg-blueGray-50">Row</td>
-                  <td class="px-4 py-2 text-black border-t-2 border-blueGray-200">00 Mb/s</td>
-                  <td class="px-4 py-2 text-black border-t-2 border-blueGray-200 bg-blueGray-50">00 GB</td>
-                  <td class="px-4 py-2 text-lg border-t-2 border-blueGray-200 bg-blueGray-50">
-                    <button role="button" class="px-4 py-2 mx-auto text-base font-medium text-blue-600 transition duration-500 ease-in-out transform bg-blue-100 rounded-lg hover:bg-blue-300 focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2">Buy Now </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="px-4 py-2 border-t-2 border-b-2 border-blueGray-200">Row</td>
-                  <td class="px-4 py-2 border-t-2 border-b-2 border-blueGray-200">48 Mb/s</td>
-                  <td class="px-4 py-2 border-t-2 border-b-2 border-blueGray-200">120 GB</td>
-                  <td class="px-4 py-2 text-lg text-blueGray-900 border-t-2 border-b-2 border-blueGray-200">
-                    <button role="button" class="px-4 py-2 mx-auto text-base font-medium text-white transition duration-500 ease-in-out transform bg-blue-600 border-blue-600 rounded-md items-centerw-full focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-blue-700">Buy Now </button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-    
+      <div class="mt-5 mb-10">
+        <h2 className="text-center text-2xl mb-2">Guests list </h2>
+      <table class="max-w-5xl mx-auto table-auto ">
+        <thead class="justify-between ">
+          <tr class="bg-green-600 ">
+            <th class="px-16 py-2">
+              <span class="text-gray-100 font-semibold">Avatar</span>
+            </th>
+            <th class="px-16 py-2">
+              <span class="text-gray-100 font-semibold">Name</span>
+            </th>
+          
+            <th class="px-16 py-2">
+              <span class="text-gray-100 font-semibold">Date</span>
+            </th>
+
+            <th class="px-16 py-2">
+              <span class="text-gray-100 font-semibold">Time</span>
+            </th>
+
+            <th class="px-16 py-2">
+              <span class="text-gray-100 font-semibold">Setting</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody class="bg-gray-200">
+          <tr class="bg-white border-b-2 border-gray-200">
+            <td class="px-16 py-2 flex flex-row items-center">
+              <img
+                class="h-8 w-8 rounded-full object-cover "
+                src="https://randomuser.me/api/portraits/men/30.jpg"
+                alt=""
+              />
+            </td>
+            <td>
+              <span class="text-center ml-2 font-semibold">John Doe</span>
+            </td>
+           
+            <td class="px-16 py-2">
+              <span>05/06/2020</span>
+            </td>
+            <td class="px-16 py-2">
+              <span>10:00</span>
+            </td>
+
+            <td class="px-16 py-2">
+              <span class="text-yellow-500 flex">
+              <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="h-5 w-5 text-green-700 mx-2"
+                                            viewBox="0 0 20 20"
+                                            fill="currentColor"
+                                        >
+                                            <path
+                                                d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"
+                                            />
+                                            <path
+                                                fill-rule="evenodd"
+                                                d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
+                                                clip-rule="evenodd"
+                                            />
+                                        </svg>
+                 <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                class="h-5 w-5 text-red-700"
+                                                viewBox="0 0 20 20"
+                                                fill="currentColor"
+                                            >
+                                                <path
+                                                    fill-rule="evenodd"
+                                                    d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                                                    clip-rule="evenodd"
+                                                />
+                                            </svg>
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
     )
 }
