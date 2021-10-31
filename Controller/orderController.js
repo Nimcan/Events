@@ -16,3 +16,19 @@ await Event.findByIdAndUpdate(req.body.order._id,{qty:ticketsLeft})
   }
 };
 
+
+exports.Find = async (req, res)=> {
+  try{
+    const guests = await Order.find({})
+      res.status(200).json({
+        message:"guests are finded",
+        guests
+      })
+    
+  }catch (error){
+    res.status(201).json({
+      message: error.message
+    })
+  }
+}
+

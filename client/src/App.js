@@ -25,7 +25,6 @@ import adminView from './Components/Admin/adminView'
 import Messages from './Components/Admin/Messages'
 import PrivateRoute from './privateRoute'
 import userRoute from './userRoute'
-import orderForm from './Components/orderForm'
 
 
 function App() {
@@ -42,22 +41,21 @@ function App() {
             <Slider/>
         </Route>
         <Route exact path = "/login" component ={Login}/>
-        <Route exact path = "/Users" component = {Userlist} />
+        <PrivateRoute exact path = "/Users" component = {Userlist} />
         <PrivateRoute exact path = "/Add" component = {Addevant} />
-        <Route exact path = "/cartlist" component = {Cartlist} />
+        <PrivateRoute exact path = "/cartlist" component = {Cartlist} />
         <Route exact path = "/pricing" component = {pricing}/>
         <Route exact path = "/pricing/:id" component = {pricing}/>
-        <Route exact path = "/eventlist" component = {Evantlist}/>
+        <PrivateRoute exact path = "/eventlist" component = {Evantlist}/>
         <Route exact path = "/eventlist/:type" component = {Evantlist}/>
         <Route exact path = "/contact" component = {contact} />
-        <Route exact path = "/Loading" component = {loading} />
+        <PrivateRoute exact path = "/Loading" component = {loading} />
         <Route exact path = "/checkout" component = {checkout}/>
         <Route exact path = "/checkout/:id" component = {checkout}/>
         <PrivateRoute exact path = "/singup" component = {addUser} />
-        <Route exact path = "/singup/:id" component = {addUser} />
-        <Route exact path = "/view" component = {adminView} />
-        <Route exact path = "/message" component = {Messages}/>
-        <Route exact path = "/order" component = {orderForm}/>
+        <PrivateRoute exact path = "/singup/:id" component = {addUser} />
+        <PrivateRoute exact path = "/view" component = {adminView} />
+        <PrivateRoute exact path = "/message" component = {Messages}/>
 
       </Switch>
       <Footer/>

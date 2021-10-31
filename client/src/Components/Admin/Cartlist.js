@@ -1,28 +1,45 @@
+import {useEffect, useState} from 'react'
+import axios from 'axios'
 
 
+function Cart(){
 
-function cart(){
+  const [data, setData] = useState([])
+  console.log(data)
+
+  useEffect(()=>{
+    axios.get("http://localhost:8000/order/orders").then((res)=> setData(res.data.guests))
+  },[])
+
+
     return(
 
       <div class="mt-5 mb-10">
+        
+        
         <h2 className="text-center text-2xl mb-2">Guests list </h2>
       <table class="max-w-5xl mx-auto table-auto ">
         <thead class="justify-between ">
           <tr class="bg-green-600 ">
             <th class="px-16 py-2">
-              <span class="text-gray-100 font-semibold">Avatar</span>
-            </th>
-            <th class="px-16 py-2">
               <span class="text-gray-100 font-semibold">Name</span>
+            </th>
+            <th class="px-10 py-2">
+              <span class="text-gray-100 font-semibold">Event</span>
             </th>
           
             <th class="px-16 py-2">
-              <span class="text-gray-100 font-semibold">Date</span>
+              <span class="text-gray-100 font-semibold">Email</span>
             </th>
 
             <th class="px-16 py-2">
-              <span class="text-gray-100 font-semibold">Time</span>
+              <span class="text-gray-100 font-semibold">phone</span>
             </th>
+
+            <th class="px-16 py-2">
+              <span class="text-gray-100 font-semibold">Tickets</span>
+            </th>
+            
 
             <th class="px-16 py-2">
               <span class="text-gray-100 font-semibold">Setting</span>
@@ -30,26 +47,29 @@ function cart(){
           </tr>
         </thead>
         <tbody class="bg-gray-200">
+          {data.map((order)=>
+          
           <tr class="bg-white border-b-2 border-gray-200">
-            <td class="px-16 py-2 flex flex-row items-center">
-              <img
-                class="h-8 w-8 rounded-full object-cover "
-                src="https://randomuser.me/api/portraits/men/30.jpg"
-                alt=""
-              />
+            <td class="px-10 py-2">
+            <span class=" font-semibold ">{order.name}</span>
             </td>
             <td>
-              <span class="text-center ml-2 font-semibold">John Doe</span>
+              <span class="text-center">{order.order[0].eventName}</span>
             </td>
            
-            <td class="px-16 py-2">
-              <span>05/06/2020</span>
+            <td class="px-10 py-2">
+              <span>{order.email}</span>
             </td>
-            <td class="px-16 py-2">
-              <span>10:00</span>
+           
+            <td class="px-10 py-2">
+              <span>{order.phone}</span>
             </td>
 
-            <td class="px-16 py-2">
+            <td class="px-10 py-2 text-center	">
+              <span>{order.order[0].qty}</span>
+            </td>
+
+            <td class="px-10 py-2 ">
               <span class="text-yellow-500 flex">
               <svg
                                             xmlns="http://www.w3.org/2000/svg"
@@ -81,6 +101,7 @@ function cart(){
               </span>
             </td>
           </tr>
+          )}
         </tbody>
       </table>
     </div>
@@ -89,4 +110,4 @@ function cart(){
 }
 
 
-export default cart
+export default Cart

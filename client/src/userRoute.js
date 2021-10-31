@@ -5,7 +5,7 @@ function PrivateRoute(props) {
   return (
     <>
       {localStorage.getItem("token") &&
-      JSON.parse(localStorage.getItem("user")).role === "user" ? (
+      JSON.parse(localStorage.getItem("user")).role === "user" || "admin" ? (
         <Route path={props.path} component={props.component} />
       ) : (
         <Redirect to="/login" />
