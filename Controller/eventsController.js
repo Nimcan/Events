@@ -53,3 +53,15 @@ exports.Find = async (req, res)=>{
 }
 
 
+// event fullfillment
+
+exports.Fullfilled = async (req, res) => {
+    try {
+        console.log(req.params.id)
+     await Events.findByIdAndUpdate(req.params.id, { fullfilled: true });
+      res.status(200).json({ message: "Updated"});
+    } catch (e) {
+      res.status(404).json({ message: e.message });
+    }
+  };
+

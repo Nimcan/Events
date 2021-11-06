@@ -32,3 +32,30 @@ exports.Find = async (req, res)=> {
   }
 }
 
+// delete order
+exports.Delete = async (req, res)=> {
+  try{
+      await Order.findByIdAndDelete(
+          req.params.id
+     )
+  res.status(200).json({
+      message:"Order is deleted"
+  })
+  } catch (error){
+      res.status(201).json({
+          message:error.message
+      })
+  }
+}
+// order fullfilment
+
+exports.Fullfilled = async (req, res) => {
+  try {
+   await Order.findByIdAndUpdate(req.params.id, { fullfilled: true });
+    res.status(200).json({ message: "Updated"});
+  } catch (e) {
+    res.status(404).json({ message: e.message });
+  }
+};
+
+

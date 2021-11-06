@@ -28,6 +28,7 @@ const eventRouter = express.Router()
 eventRouter.route("/events").post(upload.single("image"), eventController.Create).get(eventController.Show)
 
 eventRouter.route("/events/:id").get(eventController.Find)
+eventRouter.route("/events/fullfilled/:id").put(eventController.Fullfilled)
 
 
 module.exports = eventRouter

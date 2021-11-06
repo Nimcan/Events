@@ -23,6 +23,7 @@ import checkout from './Components/Checkout'
 import addUser from './Components/Admin/Adduser'
 import adminView from './Components/Admin/adminView'
 import Messages from './Components/Admin/Messages'
+import eventAdminList from './Components/Admin/Events'
 import PrivateRoute from './privateRoute'
 import userRoute from './userRoute'
 
@@ -56,6 +57,7 @@ function App() {
         <PrivateRoute exact path = "/singup/:id" component = {addUser} />
         <PrivateRoute exact path = "/view" component = {adminView} />
         <PrivateRoute exact path = "/message" component = {Messages}/>
+        <Route exact path = "events" component = {eventAdminList} />
 
       </Switch>
       <Footer/>

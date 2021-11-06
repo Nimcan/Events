@@ -21,8 +21,13 @@ const orderSchema = mongoose.Schema({
         price:String,
         Time:String,
         qty:Number,
-        image:String
-    }]
+        image:String,
+       
+        
+    }],
+     fullfilled:{
+            type:Boolean,
+            default:false}
 })
 
 

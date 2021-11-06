@@ -13,6 +13,7 @@ function Add(){
     Address:"",
     eventType:"",
     price:"",
+    date:"",
     Time:"",
     qty:0,
     image:""
@@ -27,6 +28,7 @@ function Add(){
     dataForm.append("Address", event.Address)
     dataForm.append("eventType", event.eventType)
     dataForm.append("price", event.price)
+    dataForm.append("date", event.date)
     dataForm.append("qty", event.qty)
     dataForm.append("Time", event.Time)
     dataForm.append("image", event.image)
@@ -57,17 +59,6 @@ function Add(){
                       <label for="first-name" className="block text-sm font-medium text-gray-700">Name Of Event</label>
                       <input type="text" name="first-name" id="first-name" autocomplete="given-name" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:py-2 border-gray-300 rounded-md" onChange = {(e)=> setEvent({...event, eventName:e.target.value})} />
                     </div>
-
-                    {/* <div className="col-span-6 sm:col-span-3">
-                      <label for="country" className="block text-sm font-medium text-gray-700">City</label>
-                      <select id="country" name="country" autocomplete="country" className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" onChange = {(e)=> setEvent({...event, eventType:e.target.value})}>
-                        <option>Hargaisa</option>
-                        <option>Mogadisho</option>
-                        <option>Jigjiga</option>
-                        <option>Garowe</option>
-                        <option>Djabouti</option>
-                      </select>
-                    </div> */}
       
                     <div className="col-span-6 sm:col-span-4">
                       <label for="email-address" className="block text-sm font-medium text-gray-700">Address </label>
@@ -96,8 +87,13 @@ function Add(){
                       <input type="text" name="street-address" id="street-address" autocomplete="street-address" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:py-2 border-gray-300 rounded-md" onChange = {(e)=> setEvent({...event, qty:e.target.value})}/>
                     </div>
 
-                    
-      
+
+                    <div className="col-span-6 sm:col-span-4">
+                      <label for="street-address" className="block text-sm font-medium text-gray-700">Date</label>
+                      <input type="Date" name="street-address" id="street-address" autocomplete="street-address" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:py-2 border-gray-300 rounded-md" onChange = {(e)=> setEvent({...event, date:e.target.value})}/>
+                    </div>                  
+
+                          
                     <div className="col-span-6 sm:col-span-4">
                       <label for="city" className="block text-sm font-medium text-gray-700">Time</label>
                       <input type="text" name="city" id="city" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:py-2 border-gray-300 rounded-md" onChange = {(e)=> setEvent({...event, Time:e.target.value})}/>

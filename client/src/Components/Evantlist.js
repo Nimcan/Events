@@ -36,20 +36,18 @@ function Show(){
         </div>
         <div className="mt-4 flex justify-between">
           <div>
-            <h3 className="text-sm text-gray-700">
+            <h3 className="text-sm text-gray-700 font-bold">
               <a href="#"><Link to = {`/pricing/${all._id}`} >
-                <span aria-hidden="true" className="absolute inset-0"></span>
+                <span aria-hidden="true" className="absolute inset-0 "></span>
                 {all.eventName} 
                 </Link>
               </a>
             </h3>
             <p className="mt-1 text-sm text-gray-500"><i class="fas fa-map-marker-alt"></i>  {all.Address}</p>
+            <p className="mt-1 text-sm text-gray-500"><i class="fas fa-calendar-alt"></i>  {all.date}</p>
             <p className="mt-1 text-sm text-gray-500"><i class="fas fa-stopwatch"></i>  {all.Time}</p>
-            {/* <p className="mt-1 text-sm text-gray-500"><i class="fas fa-envelope-open-text"></i>  {all.Time}</p> */}
 
           </div>
-          <p className="text-sm font-medium text-gray-900">$ {all.price}</p>
-          {/* <p className="text-sm font-medium text-gray-900">Edit</p> */}
         </div>
         
       </div>

@@ -20,12 +20,12 @@ function Message(){
 
    }
     return(
-       <div className = "flex flex-col-3 flex-wrap justify-center">
+       <div className = "flex flex-col-3 flex-wrap justify-center bg-gray-900">
       {message.map((messages)=>  
         <div class="flex  bg-white shadow-lg rounded-lg  mx-3 my-2 max-w-md md:max-w-1xl ">
    
    <div class="flex items-start px-4 py-6">
-      <img class="w-12 h-12 rounded-full object-cover mr-4 shadow" src="https://images.unsplash.com/photo-1542156822-6924d1a71ace?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="avatar"/>
+      <img class="w-12 h-12 rounded-full object-cover mr-4 shadow" src="./images/profile.png" alt="avatar"/>
       <div class="">
          <div class="flex items-center justify-between">
             <h2 class="text-lg font-semibold text-gray-900 -mt-1">{messages.name}</h2>

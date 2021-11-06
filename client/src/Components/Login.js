@@ -24,6 +24,8 @@ function Login(){
       localStorage.setItem("user", JSON.stringify(res.data.user));
       localStorage.setItem("token", JSON.stringify(res.data.token));
       history.push("/view")
+      window.location.reload();
+
     })
   }
     return(

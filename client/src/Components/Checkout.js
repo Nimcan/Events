@@ -103,6 +103,12 @@ console.log(seat)
               </div>
 
               <div className="flex items-center gap-2 ">
+                
+                <dt><i class="fas fa-calendar-alt text-2xl"></i></dt>
+                <dd className = "text-2xl">  {seat.date}</dd>
+              </div>
+
+              <div className="flex items-center gap-2 ">
                 <dt><i class="fas fa-stopwatch text-2xl"></i> </dt>
                 <dd className = "text-2xl">  {seat.Time} </dd>
               </div>
@@ -206,7 +212,7 @@ console.log(seat)
                   className="bg-indigo-600 border border-transparent rounded-md shadow-sm py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500"
                   onClick = {(e)=> Book(e)}
                    >
-                  Pay now
+                  Order
                 </button>
               </div>
             </div>

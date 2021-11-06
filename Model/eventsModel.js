@@ -16,9 +16,14 @@ const eventModelSchema = mongoose.Schema({
         enum:["networking", "tech","religeous", "book-fair", "party"]
     },
     price:String,
+    date:String,
     Time:String,
     qty:Number,
-    image:String
+    image:String,
+    fullfilled:{
+        type:Boolean,
+        default:false
+    }
 })
 
 

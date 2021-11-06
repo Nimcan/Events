@@ -12,83 +12,82 @@ function Cart(){
   },[])
 
 
+  // delete function
+
+  function Delete(id){
+    axios.delete(`http://localhost:8000/order/orders/${id}`).then((res)=> console.log(res))
+  }
+
+  function Fullfilled(id){
+    console.log(id)
+
+    axios.put(`http://localhost:8000/order/orders/fullfilled/${id}`).then((res)=> console.log(res))
+}
+
+
     return(
 
-      <div class="mt-5 mb-10">
+      <div className="mt-5 mb-10 ml-5">
         
         
         <h2 className="text-center text-2xl mb-2">Guests list </h2>
-      <table class="max-w-5xl mx-auto table-auto ">
-        <thead class="justify-between ">
-          <tr class="bg-green-600 ">
-            <th class="px-16 py-2">
-              <span class="text-gray-100 font-semibold">Name</span>
+      <table className="max-w-5xl mx-auto table-auto ">
+        <thead className="justify-between ">
+          <tr className="bg-green-600 ">
+            <th className="px-16 py-2">
+              <span className="text-gray-100 font-semibold">Name</span>
             </th>
-            <th class="px-10 py-2">
-              <span class="text-gray-100 font-semibold">Event</span>
+            <th className="px-10 py-2">
+              <span className="text-gray-100 font-semibold">Event</span>
             </th>
           
-            <th class="px-16 py-2">
-              <span class="text-gray-100 font-semibold">Email</span>
+            <th className="px-16 py-2">
+              <span className="text-gray-100 font-semibold">Email</span>
             </th>
 
-            <th class="px-16 py-2">
-              <span class="text-gray-100 font-semibold">phone</span>
+            <th className="px-16 py-2">
+              <span className="text-gray-100 font-semibold">phone</span>
             </th>
 
-            <th class="px-16 py-2">
-              <span class="text-gray-100 font-semibold">Tickets</span>
+            <th className="px-16 py-2">
+              <span className="text-gray-100 font-semibold">Tickets</span>
             </th>
             
 
-            <th class="px-16 py-2">
-              <span class="text-gray-100 font-semibold">Setting</span>
+            <th className="px-16 py-2">
+              <span className="text-gray-100 font-semibold">Setting</span>
             </th>
           </tr>
         </thead>
-        <tbody class="bg-gray-200">
+        <tbody className="bg-gray-200">
           {data.map((order)=>
           
-          <tr class="bg-white border-b-2 border-gray-200">
-            <td class="px-10 py-2">
-            <span class=" font-semibold ">{order.name}</span>
+          <tr className="bg-white border-b-2 border-gray-200">
+            <td className="px-10 py-2">
+            <span className=" font-semibold ">{order.name}</span>
             </td>
             <td>
-              <span class="text-center">{order.order[0].eventName}</span>
+              <span className="text-center">{order.order[0].eventName}</span>
             </td>
            
-            <td class="px-10 py-2">
+            <td className="px-10 py-2">
               <span>{order.email}</span>
             </td>
            
-            <td class="px-10 py-2">
+            <td className="px-10 py-2 text-center">
               <span>{order.phone}</span>
             </td>
 
-            <td class="px-10 py-2 text-center	">
+            <td className="px-10 py-2 text-center	">
               <span>{order.order[0].qty}</span>
             </td>
 
-            <td class="px-10 py-2 ">
-              <span class="text-yellow-500 flex">
-              <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            class="h-5 w-5 text-green-700 mx-2"
-                                            viewBox="0 0 20 20"
-                                            fill="currentColor"
-                                        >
-                                            <path
-                                                d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"
-                                            />
-                                            <path
-                                                fill-rule="evenodd"
-                                                d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
-                                                clip-rule="evenodd"
-                                            />
-                                        </svg>
-                 <svg
+            <td className="px-10 py-2 ">
+              <span className="text-yellow-500 flex gap-3 justify-center ">
+              <input type="checkbox" className="h-5 w-4" onClick = {()=> Fullfilled(order._id)}/>
+                 <svg                           onClick = {()=> Delete(order._id)}
                                                 xmlns="http://www.w3.org/2000/svg"
-                                                class="h-5 w-5 text-red-700"
+                                                className="h-5 w-5 text-red-700"
                                                 viewBox="0 0 20 20"
                                                 fill="currentColor"
                                             >
