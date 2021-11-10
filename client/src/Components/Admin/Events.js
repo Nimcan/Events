@@ -1,25 +1,33 @@
 import {useEffect, useState} from 'react'
 import axios from 'axios'
+import { toast } from 'react-toastify'
 
 
 function All(){
 
     const [events, setEvents] = useState([])
 
-    useEffect(()=> {
-        axios.get("http://localhost:8000/event/events").then((res)=> setEvents(res.data.allEvents))
-    },[])
+
+    useEffect(()=>{
+        axios.get("http://localhost:8000/event/events").then((res)=> {
+         const filter =  (res.data.allEvents).filter(function(element){
+           return element.fullfilled === false
+         })
+         setEvents(filter)
+        })
+      },[])
 
     function Fullfilled(id){
-        console.log(id)
-
-        axios.put(`http://localhost:8000/event/events/fullfilled/${id}`).then((res)=> console.log(res))
+        axios.put(`http://localhost:8000/event/events/fullfilled/${id}`).then((res)=> {
+            console.log(res)
+            toast.success("Event is fulfilled")
+        })
     }
     return(
 		<div class="container mx-auto px-4 sm:px-8">
         <div class="py-8">
             <div>
-                <h2 class="text-2xl font-semibold leading-tight">Users</h2>
+                <h2 class="text-2xl font-semibold leading-tight">Events</h2>
             </div>
             <div class="my-2 flex sm:flex-row flex-col">
                 <div class="flex flex-row mb-1 sm:mb-0">

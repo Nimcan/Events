@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react'
 import axios from 'axios'
+import { toast } from 'react-toastify';
 
 
 
@@ -34,6 +35,7 @@ function Add(){
     dataForm.append("image", event.image)
 
     axios.post("http://localhost:8000/event/events", dataForm).then((res)=> console.log(res))
+    toast.success("Event added")
     console.log(dataForm)
   }
     return(

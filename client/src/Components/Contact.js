@@ -1,5 +1,6 @@
 import axios from "axios"
 import {useState} from 'react'
+import { toast } from "react-toastify"
 
 
 function Contact(){
@@ -11,7 +12,10 @@ function Contact(){
   })
 
   function Save(){
-    axios.post("http://localhost:8000/message/messages", message).then((res)=> console.log(res))
+    axios.post("http://localhost:8000/message/messages", message).then((res)=> {
+      console.log(res)
+      toast.success("Message is sent")
+    })
   }
 
 

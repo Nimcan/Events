@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react'
 import axios from 'axios'
-// import {useParams} from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 
  
@@ -12,11 +12,14 @@ function Message(){
       axios.get("http://localhost:8000/message/messages").then((res)=> setMessage(res.data.allMessages))
    },[])
 
-   // const {id} = useParams()
   
    //  Delete message 
    function Delete(id){
-      axios.delete(`http://localhost:8000/message/${id}`).then((res)=> console.log(res))
+      axios.delete(`http://localhost:8000/message/${id}`).then((res)=> {
+         console.log(res)
+         alert("are you sure to delete message")
+         toast.warning("Message is deleted")
+      })
 
    }
     return(

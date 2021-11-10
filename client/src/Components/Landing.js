@@ -1,9 +1,5 @@
 
 
-
-
-
-
 function Landing(){
     return(
         <div className="relative bg-gray-100 overflow-hidden">

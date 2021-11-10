@@ -1,5 +1,8 @@
 import {useEffect, useState} from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
+import {toast } from 'react-toastify'
+
 
 
 function Cart(){
@@ -8,7 +11,12 @@ function Cart(){
   console.log(data)
 
   useEffect(()=>{
-    axios.get("http://localhost:8000/order/orders").then((res)=> setData(res.data.guests))
+    axios.get("http://localhost:8000/order/orders").then((res)=> {
+     const filter =  (res.data.guests).filter(function(element){
+       return element.fullfilled === false
+     })
+     setData(filter)
+    })
   },[])
 
 
@@ -18,18 +26,28 @@ function Cart(){
     axios.delete(`http://localhost:8000/order/orders/${id}`).then((res)=> console.log(res))
   }
 
+  // fulfilled function
+
   function Fullfilled(id){
     console.log(id)
 
-    axios.put(`http://localhost:8000/order/orders/fullfilled/${id}`).then((res)=> console.log(res))
+    axios.put(`http://localhost:8000/order/orders/fullfilled/${id}`).then((res)=> {
+      console.log(res)
+      toast.success("User Fulfilled")
+    })
+    // window.location.reload();
 }
 
 
     return(
 
       <div className="mt-5 mb-10 ml-5">
-        
-        
+          <select
+             class="appearance-none h-full w-half rounded-l border sm:rounded-r border-r border-b block appearance-none  bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500">
+                <option>All</option>
+                <option>Fullfilled</option>
+                <option>Not Fullfilled</option>
+          </select>
         <h2 className="text-center text-2xl mb-2">Guests list </h2>
       <table className="max-w-5xl mx-auto table-auto ">
         <thead className="justify-between ">

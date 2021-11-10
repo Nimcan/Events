@@ -1,6 +1,7 @@
 import axios from "axios"
 import {useState} from 'react'
-import {useHistory} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
+import {toast } from 'react-toastify'
 
 
 
@@ -25,8 +26,10 @@ function Login(){
       localStorage.setItem("token", JSON.stringify(res.data.token));
       history.push("/view")
       window.location.reload();
-
+      toast.success("User Logged In");
+      
     })
+    .catch((error)=> toast.error(error.message))
   }
     return(
         <div className="min-h-screen flex items-center justify-center bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
@@ -74,7 +77,8 @@ function Login(){
                     <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
                   </svg>
                 </span >
-                Sign in
+                Sign in 
+                
               </button>
             </div>
           </form>

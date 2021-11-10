@@ -1,6 +1,7 @@
 import {useParams} from 'react-router'
 import {useEffect, useState} from 'react'
 import axios from 'axios'
+import { toast } from 'react-toastify'
 
 
 function User(){
@@ -25,12 +26,19 @@ function User(){
   },[])
 
   function save(){
-    axios.post("http://localhost:8000/user/users", user).then((res)=> console.log(res))    
+    axios.post("http://localhost:8000/user/users", user).then((res)=> {
+      console.log(res)
+      toast.success("User is created")  
+    })
+    .catch((error)=> toast.error(error.message))
   }
 
   function Update(){
-    axios.put(`http://localhost:8000/user/${id}`, user).then((res)=> console.log(res))
-    console.log(user)
+    axios.put(`http://localhost:8000/user/${id}`, user).then((res)=> {
+      console.log(res)
+      toast.success("User is updated")
+    })
+    .catch((err)=> toast.error(err.message))
   }
 
     return(

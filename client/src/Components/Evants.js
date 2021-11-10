@@ -1,10 +1,6 @@
 import { BrowserRoute as Router, Link } from "react-router-dom";
 
 
-
-
-
-
 function Events(){
     return(
         <div className="" id = "event">

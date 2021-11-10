@@ -45,12 +45,12 @@ function View(){
          <a className="hover:text-black transition duration-200 ease-linear" href="#">Inbox</a>
       </h3>
          
-      <h3 className="pl-1 text-sm flex items-center py-2 mb-2 hover:bg-gray-100 hover:text-gray-700 transition duration-200 ease-in"  onClick = {(e)=> JSON.parse(localStorage.getItem('user')).role == 'admin' &&  setTab("guest")}>
+      <h3 className="pl-1 text-sm flex items-center py-2 mb-2 hover:bg-gray-100 hover:text-gray-700 transition duration-200 ease-in"  onClick = {(e)=>  setTab("guest")}>
          <i class="fas fa-clipboard-list mr-3 text-center text-black text-xl"></i>
          <a className="hover:text-black transition duration-200 ease-linear" href="#">Guests List</a>
       </h3>
 
-      <h3 className="pl-1 text-sm flex items-center py-2 mb-2 hover:bg-gray-100 hover:text-gray-700 transition duration-200 ease-in"  onClick = {(e)=> setTab("events")}>
+      <h3 className="pl-1 text-sm flex items-center py-2 mb-2 hover:bg-gray-100 hover:text-gray-700 transition duration-200 ease-in"  onClick = {(e)=> JSON.parse(localStorage.getItem('user')).role == 'admin' && setTab("events")}>
          <i class="fas fa-clipboard-list mr-3 text-center text-black text-xl"></i>
          <a className="hover:text-black transition duration-200 ease-linear" href="#">Events List</a>
       </h3>

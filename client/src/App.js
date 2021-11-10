@@ -25,7 +25,8 @@ import adminView from './Components/Admin/adminView'
 import Messages from './Components/Admin/Messages'
 import eventAdminList from './Components/Admin/Events'
 import PrivateRoute from './privateRoute'
-import userRoute from './userRoute'
+import {ToastContainer} from 'react-toastify'
+import "react-toastify/dist/ReactToastify.css";
 
 
 function App() {
@@ -62,6 +63,20 @@ function App() {
       </Switch>
       <Footer/>
       </Router>
+
+      <ToastContainer
+          position="top-right"
+          autoClose={5000}  
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+      />
+          {/* Same as */}
+      <ToastContainer />
       
     </div>
   );

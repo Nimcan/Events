@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react'
 import axios from 'axios'
 import {useParams} from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 
 function Order(){
@@ -20,28 +21,12 @@ console.log(seat)
   })
 
 
+
   const {id} = useParams()
   useEffect(()=> {
   id !== undefined &&(
     axios.get(`http://localhost:8000/event/events/${id}`).then((res)=> setSeat(res.data.findEvent))
   )},[])
-
-  // useEffect(()=> {
-  //   axios.get("http://localhost:8000/event/events").then((res)=>  {
-
-  //     const filter = (res.data.allEvents).filter(function(event){
-  //       return id === event._id
-            
-
-  //   }
-  //   )
-
-  //     setData(filter)
-        
-
-  //     })
-
-  // },[])
 
 
   function Book(e){
@@ -53,6 +38,7 @@ console.log(seat)
       
     }
     axios.post("http://localhost:8000/order/orders", form).then((res)=> console.log(res))
+    toast.success("Event is booked");
   }
 
 
