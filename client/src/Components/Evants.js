@@ -1,5 +1,5 @@
-import { BrowserRoute as Router, Link } from "react-router-dom";
-
+  import { BrowserRoute as Router, Link } from "react-router-dom";
+  import Slide from 'react-reveal/Slide'
 
 function Events(){
     return(
@@ -15,33 +15,40 @@ function Events(){
             <div  className="mt-6 space-y-12 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-x-6">
               <div  className="group relative">
                <Link to = {"/eventlist/religeous"}>
+               <Slide bottom>
                 <div  className="relative w-full h-60 bg-white rounded-lg overflow-hidden group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-50 lg:aspect-w-1 lg:aspect-h-1">
-                  
                   <img src="./images/mux.jpg" alt="Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug."  className="w-full h-full object-center object-cover" />
-                 
                 </div>
-            
+                </Slide>
+                <Slide bottom>
                 <p  className="sm:py-3 text-center text-base font-semibold text-gray-900">Religeous Events</p>
+                </Slide>
             </Link>
            </div>
         
               <div  className="group relative">
                 <Link to = {"/eventlist/tech"}>
                 <div  className="relative w-full h-60 bg-white rounded-lg overflow-hidden group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-50 lg:aspect-w-1 lg:aspect-h-1">
-                
+                <Slide bottom>
                   <img src="./images/tech.jpg" alt="Wood table with porcelain mug, leather journal, brass pen, leather key ring, and a houseplant."  className="w-full h-full object-center object-cover"/>
+                  </Slide>
                 </div>
-              
+              <Slide bottom>
                 <p  className="sm:py-3 text-center text-base font-semibold text-gray-900">Tech Events</p>
+                </Slide>
                 </Link>
               </div>
       
               <div  className="group relative">
               <Link to = {"/eventlist/networking"}>
                 <div  className="relative w-full h-60 bg-white rounded-lg overflow-hidden group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-50 lg:aspect-w-1 lg:aspect-h-1">
+                <Slide bottom>
                   <img src="./images/nn.jpeg" alt="Collection of four insulated travel bottles on wooden shelf."  className="w-full h-full object-center object-cover" />
+                  </Slide>
                 </div>
+                <Slide bottom>
                 <p  className="sm:py-3 text-center text-base font-semibold text-gray-900">Networking Events</p>
+                </Slide>
                 </Link>
                 </div>
             </div>
@@ -57,20 +64,28 @@ function Events(){
               <div  className="group relative">
               <Link to = {"/eventlist/book-fair"}>
                 <div  className="relative w-full h-60 bg-white rounded-lg overflow-hidden group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-50 lg:aspect-w-1 lg:aspect-h-1">
+                  <Slide bottom>
                   <img src="./images/academic.jpg" alt="Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug."  className="w-full h-full object-center object-cover" />
+                  </Slide>
                 </div>
-            
+
+                <Slide bottom>
                 <p  className="sm:py-3 text-center text-base font-semibold text-gray-900">Book Fair / Academic events</p>
+                </Slide>
                 </Link>
+
                 </div>
       
               <div  className="group relative">
               <Link to = {"/eventlist/party"}>
                 <div  className="relative w-full h-60 bg-white rounded-lg overflow-hidden group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-50 lg:aspect-w-1 lg:aspect-h-1">
+                <Slide bottom>
                   <img src="./images/party.jpg" alt="Wood table with porcelain mug, leather journal, brass pen, leather key ring, and a houseplant."  className="w-full h-full object-center object-cover"/>
+                  </Slide>
                 </div>
-           
+                <Slide bottom>
                 <p  className="sm:py-3 text-center text-base font-semibold text-gray-900">Party Events</p>
+                </Slide>
                 </Link>
               </div>
       

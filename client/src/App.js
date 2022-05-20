@@ -8,6 +8,7 @@ import Header from './Components/Header'
 import Cartlist from './Components/Admin/Cartlist'
 import pricing from './Components/Pricing'
 import Evantlist from './Components/Evantlist'
+
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -37,7 +38,6 @@ function App() {
         <Switch>
         <Route exact path = "/"> 
             <Landing/>
-            
             <Evants/>
             <Testomonial/>
             <Slider/>
@@ -59,11 +59,9 @@ function App() {
         <PrivateRoute exact path = "/view" component = {adminView} />
         <PrivateRoute exact path = "/message" component = {Messages}/>
         <Route exact path = "events" component = {eventAdminList} />
-
       </Switch>
       <Footer/>
       </Router>
-
       <ToastContainer
           position="top-right"
           autoClose={5000}  

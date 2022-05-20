@@ -14,7 +14,7 @@ exports.newUser = async (req, res)=>{
             userName:req.body.userName,
             email: req.body.email,
             password:hashPassword,
-            role:req.body.role,
+            role:req.body.role, 
             tittle: req.body.tittle
         })
 

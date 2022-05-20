@@ -9,6 +9,10 @@
   box-sizing: border-box;
 } 
 
+html{
+  scroll-behavior: smooth;
+}
+
 /* footer css */
 
  
@@ -59,6 +63,7 @@ scroll-behavior: smooth;
 }
 .snap-start {
 scroll-snap-align: start;
+
 }
 
 

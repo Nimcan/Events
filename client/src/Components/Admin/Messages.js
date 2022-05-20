@@ -23,6 +23,7 @@ function Message(){
 
    }
     return(
+       
        <div className = "flex flex-col-3 flex-wrap justify-center bg-gray-900">
       {message.map((messages)=>  
         <div class="flex  bg-white shadow-lg rounded-lg  mx-3 my-2 max-w-md md:max-w-1xl ">
